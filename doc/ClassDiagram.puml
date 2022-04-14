@@ -1,0 +1,142 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+
+Interface DatabaseInterface
+
+class EmployeeManager {
+    -CommandParser commandParser
+
+    +runCommand(String line)
+}
+
+class Name {
+    - String firstName
+    - String lastName
+}
+
+class PhoneNumber {
+    - String middleNumber
+    - String lastNumber
+}
+
+
+class BirthDay {
+    - String year
+    - String month
+    - String day
+}
+
+class EmployeeNumber {
+    - String fullNumber
+    - String shortNumber
+}
+
+class Employee {
+    -int id
+    -EmployeeNumber employeeNum
+    -Name name
+    -String cl
+    -PhoneNumber phoneNum
+    -BirthDay birthday
+    -String certi
+
+'    + getFirstName()
+'    + getLastName()
+}
+
+interface Option {
+
+}
+
+class Option1 {
+
+}
+
+class Option2 {
+
+}
+
+class Option3 {
+
+}
+
+'class SearchManager {
+'    + search(): ArrayList<Employee>
+'}
+
+class CommandParser {
+    +parseCommand(String line): Command
+}
+
+
+interface DatabaseInterface {
+    +select(Employee employee): ArrayList<Employee>
+    +insert(Employee employee): ArrayList<Employee>
+    +delete(int id): ArrayList<Employee>
+    +update(int id, Employee employee): ArrayList<Employee>
+}
+
+class Database {
+'    - SearchManager searchManager
+    - ArrayList<Employee> employees
+}
+
+abstract class Command {
+    - ArrayList<String> params
+    - DatabaseInterface databaseInterface
+    - ArrayList<Option> options
+'    - Comparable comparable
+
+
+    - print()
+    + run()
+}
+
+class AddCommand {
+    select()
+    insert()
+}
+
+class DeleteCommand {
+    select()
+    delete()
+}
+
+class SearchCommand {
+    select()
+}
+
+class ModifyCommand {
+    select()
+    update()
+}
+CommandParser ..> Command
+EmployeeManager *--- CommandParser
+Database *- Employee
+
+'Database *-- SearchManager
+
+Command <|-- DeleteCommand
+Command <|-- SearchCommand
+Command <|-- ModifyCommand
+
+Command *- DatabaseInterface
+Command *-- Option
+
+DatabaseInterface <|- Database
+
+Command <|-- AddCommand
+
+
+Option <|-- Option1
+Option <|-- Option2
+Option <|-- Option3
+
+Employee *-- PhoneNumber
+Employee *-- Name
+Employee *-- BirthDay
+Employee *-- EmployeeNumber
+
+@enduml
