@@ -9,7 +9,11 @@ public class BirthDay extends EmployeeField {
 
     public BirthDay(String strBirthday) throws ImproperlyConfigured {
         super(strBirthday);
+        year = strBirthday.substring(0, 4);
+        month = strBirthday.substring(4, 6);
+        day = strBirthday.substring(6);
     }
+
     public String getYear() {
         return year;
     }
@@ -33,4 +37,21 @@ public class BirthDay extends EmployeeField {
     public void setDay(String day) {
         this.day = day;
     }
+
+    @Override
+    public boolean isValid() {
+        return year.matches("\\d{4}") &&
+                month.matches("\\d{2}") &&
+                day.matches("\\d{2}") &&
+                Integer.parseInt(month) >= 1 &&
+                Integer.parseInt(month) <= 12 &&
+                Integer.parseInt(day) >= 1 &&
+                Integer.parseInt(day) <= 31;
+    }
+
+    @Override
+    protected boolean isValidString(String inputString) {
+        return inputString.matches("\\d{8}");
+    }
+
 }

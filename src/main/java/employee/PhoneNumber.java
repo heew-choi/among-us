@@ -8,7 +8,12 @@ public class PhoneNumber extends EmployeeField {
 
     public PhoneNumber(String strPhoneNumber) throws ImproperlyConfigured {
         super(strPhoneNumber);
+
+        String[] splitPhoneNumber = strPhoneNumber.split("-");
+        this.middleNumber = splitPhoneNumber[1];
+        this.lastNumber = splitPhoneNumber[2];
     }
+
     public String getMiddleNumber() {
         return middleNumber;
     }
@@ -23,5 +28,16 @@ public class PhoneNumber extends EmployeeField {
 
     public void setLastNumber(String lastNumber) {
         this.lastNumber = lastNumber;
+    }
+
+    @Override
+    public boolean isValid() {
+        return middleNumber.matches("\\d{4}") &&
+                lastNumber.matches("\\d{4}");
+    }
+
+    @Override
+    protected boolean isValidString(String inputString) {
+        return inputString.matches("010-\\d{4}-\\d{4}");
     }
 }
