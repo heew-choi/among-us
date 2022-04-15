@@ -14,17 +14,27 @@ public class Database implements DatabaseInterface {
 
     @Override
     public ArrayList<Employee> delete(int id) {
+        employees.remove(id);
         return employees;
     }
 
     @Override
     public ArrayList<Employee> insert(Employee employee) {
-        employees.add(employee);
+        employees.add(getInsertPosition(employee), employee);
         return employees;
     }
 
     @Override
     public ArrayList<Employee> update(int id, Employee employee) {
         return employees;
+    }
+
+    private int getInsertPosition(Employee employee) {
+        for (Employee storedEmployee : employees) {
+            if (storedEmployee.getFullEmployeeNumber().compareTo(employee.getFullEmployeeNumber()) > 0) {
+                return employees.indexOf(storedEmployee);
+            }
+        }
+        return employees.size();
     }
 }

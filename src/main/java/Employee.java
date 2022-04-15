@@ -21,6 +21,10 @@ public class Employee {
         return id;
     }
 
+    public String getFullEmployeeNumber() {
+        return employeeNum.getFullNumber();
+    }
+
     public String getCerti() {
         return certi;
     }
