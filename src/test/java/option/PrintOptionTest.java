@@ -2,8 +2,8 @@ package option;
 
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
-import option.printOption.PrintCountOption;
-import option.printOption.PrintListOption;
+import option.printOption.CountPrintOption;
+import option.printOption.ListPrintOption;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -28,36 +28,30 @@ public class PrintOptionTest {
     }
 
     @Test
-    void Print_카운트_옵션_기본_테스트() {
-        // Print Count Test
-        PrintCountOption printCountOption = new PrintCountOption();
-        assertEquals("6", printCountOption.report(employees));
+    void 카운트_프린트_옵션_기본_테스트() {
+        CountPrintOption countPrintOption = new CountPrintOption();
+        assertEquals("6", countPrintOption.report(employees));
     }
 
     @Test
-    void Print_리스트_옵션_기본_테스트() {
-        // Print List Test
-        PrintListOption printListOption = new PrintListOption();
-        assertEquals("", printListOption.report(employees));
+    void 리스트_프린트_옵션_기본_테스트() {
+        ListPrintOption listPrintOption = new ListPrintOption();
+        assertEquals("", listPrintOption.report(employees));
     }
 
     @Test
-    void Print_카운트_옵션_제로_테스트() {
-        // Employee List 준비
+    void 카운트_프린트_옵션_제로_테스트() {
         ArrayList<Employee> zeroEmployees = new ArrayList<>();
 
-        // Print Count Test
-        PrintCountOption printCountOption = new PrintCountOption();
-        assertEquals("NONE", printCountOption.report(zeroEmployees));
+        CountPrintOption countPrintOption = new CountPrintOption();
+        assertEquals("NONE", countPrintOption.report(zeroEmployees));
     }
 
     @Test
-    void Print_리스트_옵션_제로_테스트() {
-        // Employee List 준비
+    void 리스트_프린트_옵션_제로_테스트() {
         ArrayList<Employee> zeroEmployees = new ArrayList<>();
 
-        // Print List Test
-        PrintListOption printListOption = new PrintListOption();
-        assertEquals("NONE", printListOption.report(zeroEmployees));
+        ListPrintOption listPrintOption = new ListPrintOption();
+        assertEquals("NONE", listPrintOption.report(zeroEmployees));
     }
 }

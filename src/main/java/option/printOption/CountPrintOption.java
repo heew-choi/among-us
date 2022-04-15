@@ -1,11 +1,10 @@
 package option.printOption;
 
 import employee.Employee;
-import option.printOption.IPrintOption;
 
 import java.util.ArrayList;
 
-public class PrintCountOption implements IPrintOption {
+public class CountPrintOption implements IPrintOption {
 
     @Override
     public String report(ArrayList<Employee> employees) {

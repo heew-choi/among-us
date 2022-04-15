@@ -5,7 +5,7 @@ import exceptions.ImproperlyConfigured;
 import option.compareOption.BirthdayMonthCompareOption;
 import option.compareOption.BirthdayYearCompareOption;
 import option.compareOption.CompareOption;
-import option.printOption.PrintListOption;
+import option.printOption.ListPrintOption;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayNameGeneration(DisplayNameGenerator.Standard.ReplaceUnderscores.class)
 public class CompareOptionTest {
 
-    PrintListOption printListOption = new PrintListOption();
+    ListPrintOption listPrintOption = new ListPrintOption();
     ArrayList<Employee> employees;
 
     @BeforeEach
@@ -38,7 +38,7 @@ public class CompareOptionTest {
         // Compare Option Test
         CompareOption compareOption;
         compareOption = new BirthdayYearCompareOption("1977");
-        assertEquals("15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV", printListOption.report(compareOption.filter(employees)));
+        assertEquals("15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV", listPrintOption.report(compareOption.filter(employees)));
     }
 
     @Test
