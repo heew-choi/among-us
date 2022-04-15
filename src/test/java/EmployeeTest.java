@@ -19,15 +19,15 @@ class EmployeeTest {
         @Test
         @DisplayName("Fail case")
         void fail() throws ImproperlyConfigured {
-            assertFalse(new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","19980906","PRO").isValid());
-            assertFalse(new Employee("1805a01","KYUMOK KIM","CL2","010-9777-6055","19980906","PRO").isValid());
-            assertFalse(new Employee("1805a01","KYUMOK ddKIM","CL2","010-9777-6055","19980906","PRO").isValid());
-            assertFalse(new Employee("1805001","KYUMOK FFFFFAAAFKIM","CL2","010-9777-6055","19980906","PRO").isValid());
-            assertFalse(new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","19980906","PRO").isValid());
-            assertFalse(new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","19980906","P@RO").isValid());
-            assertFalse(new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","19980906","EXPERT").isValid());
-            assertFalse(new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","199w80906","EXP").isValid());
-            assertFalse(new Employee("1805001","KYUMOK KIM","CL5","010-9777-6055","199w80906","EXP").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","19980906","PRO").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new Employee("1805a01","KYUMOK KIM","CL2","010-9777-6055","19980906","PRO").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new Employee("1805a01","KYUMOK ddKIM","CL2","010-9777-6055","19980906","PRO").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new Employee("1805001","KYUMOK FFFFFAAAFKIM","CL2","010-9777-6055","19980906","PRO").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","19980906","PRO").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","19980906","P@RO").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","19980906","EXPERT").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new Employee("1805001","KYUMOK KIM","CL2","010-9777-6055","199w80906","EXP").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new Employee("1805001","KYUMOK KIM","CL5","010-9777-6055","199w80906","EXP").isValid());
         }
     }
 }

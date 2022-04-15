@@ -19,9 +19,9 @@ class EmployeeNumberTest {
         @Test
         @DisplayName("Fail case")
         void fail() throws ImproperlyConfigured {
-            assertFalse(new EmployeeNumber("118020989").isValid());
-            assertFalse(new EmployeeNumber("80209a").isValid());
-            assertFalse(new EmployeeNumber("-1a209a").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new EmployeeNumber("118020989").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new EmployeeNumber("80209a").isValid());
+            assertThrows(ImproperlyConfigured.class, () -> new EmployeeNumber("-1a209a").isValid());
         }
     }
 }
