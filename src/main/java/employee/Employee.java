@@ -44,6 +44,10 @@ public class Employee {
         return String.join(",", strings);
     }
 
+    public String getFullEmployeeNumber() {
+        return employeeNum.getFullNumber();
+    }
+
     public int getId() {
         return id;
     }
