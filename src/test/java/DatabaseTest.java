@@ -34,7 +34,7 @@ class DatabaseTest {
     @Test
     void updateTest() {
         ArrayList<Employee> employees = db.update(0, testEmployee);
-        assertEquals("ADV", employees.get(0).getCerti(), "변경 데이터의 certi값");
+        assertEquals("ADV", employees.get(0).getCerti().toString(), "변경 데이터의 certi값");
     }
 
     @Test

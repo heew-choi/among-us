@@ -6,10 +6,10 @@ public class Employee {
     private int id;
     private EmployeeNumber employeeNum;
     private Name name;
-    private String cl;
+    private CareerLevel cl;
     private PhoneNumber phoneNum;
     private BirthDay birthday;
-    private String certi;
+    private CertificationLevel certi;
 
     public Employee() {
     }
@@ -17,10 +17,10 @@ public class Employee {
     public Employee(String strEmployeeNum, String strName, String cl, String strPhoneNumber, String strBirthday, String certi) throws ImproperlyConfigured {
         this.employeeNum = new EmployeeNumber(strEmployeeNum);
         this.name = new Name(strName);
-        this.cl = cl;
+        this.cl = new CareerLevel(cl);
         this.phoneNum = new PhoneNumber(strPhoneNumber);
         this.birthday = new BirthDay(strBirthday);
-        this.certi = certi;
+        this.certi = new CertificationLevel(certi);
     }
 
     public boolean isValid() {
@@ -28,18 +28,18 @@ public class Employee {
                 name.isValid() &&
                 phoneNum.isValid() &&
                 birthday.isValid() &&
-                cl.matches("CL[1-4]") &&
-                certi.matches("ADV|PRO|EX");
+                cl.isValid() &&
+                certi.isValid();
     }
 
     public String toString() {
         String[] strings = {
                 employeeNum.toString(),
                 name.toString(),
-                cl,
+                cl.toString(),
                 phoneNum.toString(),
                 birthday.toString(),
-                certi
+                certi.toString()
         };
         return String.join(",", strings);
     }
@@ -72,11 +72,11 @@ public class Employee {
         this.name = name;
     }
 
-    public String getCl() {
+    public CareerLevel getCl() {
         return cl;
     }
 
-    public void setCl(String cl) {
+    public void setCl(CareerLevel cl) {
         this.cl = cl;
     }
 
@@ -96,11 +96,11 @@ public class Employee {
         this.birthday = birthday;
     }
 
-    public String getCerti() {
+    public CertificationLevel getCerti() {
         return certi;
     }
 
-    public void setCerti(String certi) {
+    public void setCerti(CertificationLevel certi) {
         this.certi = certi;
     }
 }
