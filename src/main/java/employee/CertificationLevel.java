@@ -24,7 +24,7 @@ public class CertificationLevel extends EmployeeField {
 
     @Override
     public boolean isValid() {
-        return certi.matches("ADV|PRO|EX");
+        return isValidString(certi);
     }
 
     @Override

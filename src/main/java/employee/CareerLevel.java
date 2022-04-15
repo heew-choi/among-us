@@ -24,7 +24,7 @@ public class CareerLevel extends EmployeeField {
 
     @Override
     public boolean isValid() {
-        return cl.matches("CL[1-4]");
+        return isValidString(cl);
     }
 
     @Override
