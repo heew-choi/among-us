@@ -46,6 +46,14 @@ class Employee {
 '    + getLastName()
 }
 
+class EmployeeField {
+    + isValidString(String inputString): boolean
+}
+
+interface EmployeeFieldValidator {
+    + isValid(): boolean
+}
+
 interface Option {
 
 }
@@ -138,5 +146,12 @@ Employee *-- PhoneNumber
 Employee *-- Name
 Employee *-- BirthDay
 Employee *-- EmployeeNumber
+
+PhoneNumber --|> EmployeeField
+Name --|> EmployeeField
+BirthDay --|> EmployeeField
+EmployeeNumber --|> EmployeeField
+
+EmployeeField --|> EmployeeFieldValidator
 
 @enduml
