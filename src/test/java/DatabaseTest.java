@@ -1,3 +1,5 @@
+import employee.*;
+import exceptions.ImproperlyConfigured;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -9,16 +11,16 @@ class DatabaseTest {
     Employee testEmployee;
 
     @BeforeEach
-    void init() {
+    void init() throws ImproperlyConfigured {
         db = new Database();
-        testEmployee = new Employee(2, new EmployeeNumber("13004450"), new Name(), "CL2", new PhoneNumber(), new BirthDay(), "PRO");
-        db.insert(new Employee(1, new EmployeeNumber("99887766"), new Name(), "CL1", new PhoneNumber(), new BirthDay(), "ADV"));
+        testEmployee = new Employee("13004450", "TEST KIM", "CL2", "010-1234-5678", "19901010", "PRO");
+        db.insert(new Employee("99887766", "TEST KANG", "CL1", "010-9874-3216", "19661010", "ADV"));
     }
 
     @Test
-    void insertTest() {
+    void insertTest() throws ImproperlyConfigured {
         assertEquals(2, db.insert(testEmployee).size(), "Insert 후의 size는 2");
-        db.insert(new Employee(99, new EmployeeNumber("07001234"), new Name(), "CL4", new PhoneNumber(), new BirthDay(), "EX"));
+        db.insert(new Employee("07050411", "TEST KING", "CL4", "010-9874-3216", "19801010", "EX"));
         for ( Employee employee : db.select(testEmployee)) {
             System.out.println(employee.getFullEmployeeNumber() + ":" + employee.getCerti());
         }
