@@ -12,7 +12,6 @@ public class Employee {
     private String certi;
 
     public Employee() {
-
     }
 
     public Employee(String strEmployeeNum, String strName, String cl, String strPhoneNumber, String strBirthday, String certi) throws ImproperlyConfigured {
@@ -31,6 +30,18 @@ public class Employee {
                 birthday.isValid() &&
                 cl.matches("CL[1-4]") &&
                 certi.matches("ADV|PRO|EX");
+    }
+
+    public String toString() {
+        String[] strings = {
+                employeeNum.toString(),
+                name.toString(),
+                cl,
+                phoneNum.toString(),
+                birthday.toString(),
+                certi
+        };
+        return String.join(",", strings);
     }
 
     public int getId() {

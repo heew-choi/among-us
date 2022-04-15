@@ -31,6 +31,10 @@ public class EmployeeNumber extends EmployeeField {
         this.shortNumber = shortNumber;
     }
 
+    public String toString() {
+        return shortNumber;
+    }
+
     @Override
     public boolean isValid() {
         return isValidString(shortNumber);

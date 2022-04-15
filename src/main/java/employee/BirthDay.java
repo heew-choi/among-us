@@ -38,6 +38,10 @@ public class BirthDay extends EmployeeField {
         this.day = day;
     }
 
+    public String toString() {
+        return year + month + day;
+    }
+
     @Override
     public boolean isValid() {
         return year.matches("\\d{4}") &&

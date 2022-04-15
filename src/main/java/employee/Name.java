@@ -29,6 +29,11 @@ public class Name extends EmployeeField {
         this.lastName = lastName;
     }
 
+
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+
     @Override
     public boolean isValid() {
         return firstName.matches("[A-Z]+") &&

@@ -30,6 +30,10 @@ public class PhoneNumber extends EmployeeField {
         this.lastNumber = lastNumber;
     }
 
+    public String toString() {
+        return "010-" + middleNumber + "-" + lastNumber;
+    }
+
     @Override
     public boolean isValid() {
         return middleNumber.matches("\\d{4}") &&
