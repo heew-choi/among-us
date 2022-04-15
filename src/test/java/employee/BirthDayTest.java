@@ -1,20 +1,30 @@
 package employee;
 
 import exceptions.ImproperlyConfigured;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BirthDayTest {
+    static BirthDay b;
+
+    @BeforeAll
+    static void setup() throws ImproperlyConfigured {
+        b = new BirthDay("19921014");
+    }
+
     @Test
-    @DisplayName("Create instance")
-    void createInstanceTest() throws ImproperlyConfigured {
-        BirthDay b = new BirthDay("19921014");
+    @DisplayName("getter Test")
+    void createInstanceTest() {
         assertEquals("1992", b.getYear() );
         assertEquals("10", b.getMonth());
         assertEquals("14", b.getDay());
+    }
+
+    @Test
+    @DisplayName("toString() Test")
+    void toStringTest() {
+        assertEquals("19921014", b.toString());
     }
 
     @Nested

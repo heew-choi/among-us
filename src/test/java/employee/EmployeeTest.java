@@ -9,6 +9,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTest {
+    @Test
+    @DisplayName("toString() Test")
+    void toStringTest() throws ImproperlyConfigured {
+        assertEquals("18050301,KYUMOK KIM,CL2,010-9777-6055,19980906,PRO", new Employee("18050301","KYUMOK KIM","CL2","010-9777-6055","19980906","PRO").toString());
+    }
+
     @Nested
     @DisplayName("employee.Employee object validation Check Test")
     class ValidationCheckTest {
