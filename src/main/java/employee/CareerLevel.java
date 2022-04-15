@@ -18,6 +18,7 @@ public class CareerLevel extends EmployeeField {
         this.cl = cl;
     }
 
+    @Override
     public String toString() {
         return this.cl;
     }
@@ -28,7 +29,7 @@ public class CareerLevel extends EmployeeField {
     }
 
     @Override
-    protected boolean isValidString(String inputString) {
+    public boolean isValidString(String inputString) {
         return inputString.matches("CL[1-4]");
     }
 }

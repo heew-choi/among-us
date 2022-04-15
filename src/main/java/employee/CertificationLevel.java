@@ -18,6 +18,7 @@ public class CertificationLevel extends EmployeeField {
         this.certi = certi;
     }
 
+    @Override
     public String toString() {
         return this.certi;
     }
@@ -28,7 +29,7 @@ public class CertificationLevel extends EmployeeField {
     }
 
     @Override
-    protected boolean isValidString(String inputString) {
+    public boolean isValidString(String inputString) {
         return inputString.matches("ADV|PRO|EX");
     }
 }

@@ -31,6 +31,7 @@ public class EmployeeNumber extends EmployeeField {
         this.shortNumber = shortNumber;
     }
 
+    @Override
     public String toString() {
         return shortNumber;
     }
@@ -41,7 +42,7 @@ public class EmployeeNumber extends EmployeeField {
     }
 
     @Override
-    protected boolean isValidString(String inputString) {
+    public boolean isValidString(String inputString) {
         return inputString.matches("\\d{8}");
     }
 }
