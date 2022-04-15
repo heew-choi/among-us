@@ -1,4 +1,5 @@
-import employee.BirthDay;
+package employee;
+
 import exceptions.ImproperlyConfigured;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

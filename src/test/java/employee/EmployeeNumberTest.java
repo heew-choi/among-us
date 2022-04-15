@@ -1,3 +1,5 @@
+package employee;
+
 import employee.EmployeeNumber;
 import exceptions.ImproperlyConfigured;
 import org.junit.jupiter.api.DisplayName;
