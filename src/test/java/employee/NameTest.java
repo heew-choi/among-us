@@ -26,7 +26,7 @@ class NameTest {
         }
         @Test
         @DisplayName("Fail case")
-        void fail() throws ImproperlyConfigured {
+        void fail() {
             assertThrows(ImproperlyConfigured.class, () -> new Name("KYUMOKRRRRRRRRRRRR KIM").isValid());
         }
     }

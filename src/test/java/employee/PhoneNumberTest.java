@@ -26,7 +26,7 @@ class PhoneNumberTest {
         }
         @Test
         @DisplayName("Fail case")
-        void fail() throws ImproperlyConfigured {
+        void fail() {
             assertThrows(ImproperlyConfigured.class, () -> new PhoneNumber("010-29a86228"));
             assertThrows(ImproperlyConfigured.class, () -> new PhoneNumber("010-29298-6228"));
             assertThrows(ImproperlyConfigured.class, () -> new PhoneNumber("010-29a8-6228"));
