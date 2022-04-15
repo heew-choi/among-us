@@ -1,4 +1,4 @@
-import employee.EmployeeNumber;
+import employee.Name;
 import exceptions.ImproperlyConfigured;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -6,22 +6,26 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EmployeeNumberTest {
+class NameTest {
+    @Test
+    void createObjectTest() throws ImproperlyConfigured {
+        Name name = new Name("TAEHYUN KIM");
+        assertEquals("TAEHYUN", name.getFirstName());
+        assertEquals("KIM", name.getLastName());
+    }
 
     @Nested
-    @DisplayName("employee.EmployeeNumber validation check test")
+    @DisplayName("employee.Name object validation Check Test")
     class ValidationCheckTest {
         @Test
         @DisplayName("Success case")
         void success() throws ImproperlyConfigured {
-            assertTrue(new EmployeeNumber("18020989").isValid());
+            assertTrue(new Name("KYUMOK KIM").isValid());
         }
         @Test
         @DisplayName("Fail case")
         void fail() throws ImproperlyConfigured {
-            assertFalse(new EmployeeNumber("118020989").isValid());
-            assertFalse(new EmployeeNumber("80209a").isValid());
-            assertFalse(new EmployeeNumber("-1a209a").isValid());
+            assertFalse(new Name("KYUMOKRRRRRRRRRRRR KIM").isValid());
         }
     }
 }
