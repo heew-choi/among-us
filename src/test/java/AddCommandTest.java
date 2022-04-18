@@ -1,8 +1,8 @@
+import employee.Employee;
 import exceptions.ImproperlyConfigured;
 import option.Option;
 import option.compareOption.DefaultCompareOption;
 import option.printOption.CountPrintOption;
-import employee.Employee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +36,7 @@ class AddCommandTest {
     class runTest {
 
         @ParameterizedTest
-        @DisplayName("정상 Case")
+        @DisplayName("정상 Case : 신규 사원 추가")
         @CsvSource({
                 "15123099/VXIHXOTH JHOP/CL3/010-3112-2609/19771211/ADV",
                 "17112609/FB NTAWR/CL4/010-5645-6122/19861203/PRO",
@@ -52,6 +51,24 @@ class AddCommandTest {
             int initCount = tester.database.select().size();
             tester.run();
             assertEquals(initCount + 1, tester.database.select().size());
+        }
+
+        @ParameterizedTest
+        @DisplayName("정상 Case : 중복된 사원 미추가")
+        @CsvSource({
+                "15123099/VXIHXOTH JHOP/CL3/010-3112-2609/19771211/ADV",
+                "17112609/FB NTAWR/CL4/010-5645-6122/19861203/PRO"
+        })
+        void run_normal_duplicated(String paramStr) throws ImproperlyConfigured {
+            tester.database.insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
+            tester.database.insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
+
+            List<String> params = Arrays.asList(paramStr.split("/"));
+            tester.setParams(params);
+
+            int initCount = tester.database.select().size();
+            tester.run();
+            assertEquals(initCount, tester.database.select().size());
         }
 
     }
