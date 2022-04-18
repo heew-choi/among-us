@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class BirthdayDayCompareOption extends CompareOption {
 
-    BirthdayDayCompareOption(String query) {
+    public BirthdayDayCompareOption(String query) {
         super(query);
     }
 
