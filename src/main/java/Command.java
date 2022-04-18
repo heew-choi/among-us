@@ -1,23 +1,25 @@
-import java.util.ArrayList;
+import option.Option;
+
+import java.util.List;
 
 public abstract class Command {
-    ArrayList<String> params;
     DatabaseInterface databaseInterface;
-    ArrayList<Option> options;
+    Option option;
+    List<String> params;
 
     public Command() {
-        databaseInterface = new Database();
+        this.databaseInterface = new Database();
     }
 
-    public String print(ArrayList<Employee> records) {
+    public String print(List<Employee> records) {
         return "";
     }
 
-    public ArrayList<String> getParams() {
+    public List<String> getParams() {
         return params;
     }
 
-    public void setParams(ArrayList<String> params) {
+    public void setParams(List<String> params) {
         this.params = params;
     }
 
@@ -25,12 +27,12 @@ public abstract class Command {
         this.databaseInterface = databaseInterface;
     }
 
-    public ArrayList<Option> getOptions() {
-        return options;
+    public Option getOption() {
+        return option;
     }
 
-    public void setOptions(ArrayList<Option> options) {
-        this.options = options;
+    public void setOption(Option option) {
+        this.option = option;
     }
 
     public abstract String getCommandType();

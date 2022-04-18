@@ -1,10 +1,15 @@
-import parserValidChecker.*;
+import option.Option;
+import option.compareOption.*;
+import option.printOption.CountPrintOption;
+import option.printOption.IPrintOption;
+import option.printOption.ListPrintOption;
 import parserValidChecker.CommandTypeChecker;
 import parserValidChecker.OptionValidChecker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class CommandParser {
     private static final int MIN_SPLIT_CNT = 6;
@@ -32,7 +37,7 @@ public class CommandParser {
 
             Command command = CommandFactory.getCommand(commandType);
             command.setParams(new ArrayList<String>(params));
-            // To Do : Option 삽입 로직 추가
+            command.setOption(getCommandOption(options, params));
 
             return command;
         }
@@ -65,6 +70,42 @@ public class CommandParser {
             throw e;
         }
         return true;
+    }
+
+    private Option getCommandOption(List<String> options, List<String> params) {
+        return new Option(getPritnOption(options.get(0), params), getCompareOption(options.get(1), params));
+    }
+
+    private IPrintOption getPritnOption(String printOption, List<String> params) {
+        if (printOption == "-p") {
+            return new ListPrintOption();
+        }
+        return new CountPrintOption();
+    }
+
+    private CompareOption getCompareOption(String option, List<String> params) {
+        if (option.equals("-f") && Objects.equals(params.get(0), "name")) {
+            return new FirstNameCompareOption("");
+        }
+        else if (option.equals("-l") && Objects.equals(params.get(0), "name")) {
+            return new LastNameCompareOption("");
+        }
+        else if (option.equals("-m") && Objects.equals(params.get(0), "phoneNum")) {
+            return new MiddlePhoneNumberCompareOption("");
+        }
+        else if (option.equals("-l") && Objects.equals(params.get(0), "phoneNum")) {
+            return new LastPhoneNumberCompareOption("");
+        }
+        else if (option.equals("-y") && Objects.equals(params.get(0), "birthday")) {
+            return new BirthdayYearCompareOption("");
+        }
+        else if (option.equals("-m") && Objects.equals(params.get(0), "birthday")) {
+            return new BirthdayMonthCompareOption("");
+        }
+        else if (option.equals("-d") && Objects.equals(params.get(0), "birthday")) {
+            return new BirthdayDayCompareOption("");
+        }
+        return new DefaultCompareOption("");
     }
 
 }
