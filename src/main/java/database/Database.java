@@ -3,6 +3,7 @@ package database;
 import employee.Employee;
 import employee.EmployeeNumber;
 import option.compareOption.CompareOption;
+import option.compareOption.EmployeeNumberCompareOption;
 import option.compareOption.LastNameCompareOption;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class Database {
     }
 
     private boolean isDuplicateEmployeeNumber(EmployeeNumber employeeNumber) {
-        return employees.stream().filter(emp -> emp.getEmployeeNum().toString().equals(employeeNumber.toString())).collect(Collectors.toCollection(ArrayList::new)).size() > 0;
+        return select(new EmployeeNumberCompareOption(employeeNumber.toString())).size() > 0;
     }
 
     private int getInsertPosition(Employee employee) {
