@@ -4,7 +4,6 @@ import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddCommand extends Command {

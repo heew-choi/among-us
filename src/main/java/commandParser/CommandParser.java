@@ -2,8 +2,7 @@ package commandParser;
 
 import command.Command;
 import command.CommandFactory;
-import commandParser.commandValidChecker.CommandTypeChecker;
-import commandParser.commandValidChecker.OptionValidChecker;
+import commandParser.commandValidChecker.*;
 import option.Option;
 import option.compareOption.*;
 import option.printOption.*;

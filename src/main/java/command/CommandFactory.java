@@ -1,6 +1,5 @@
 package command;
 
-import command.*;
 import database.Database;
 
 public class CommandFactory {

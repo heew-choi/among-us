@@ -3,10 +3,7 @@ import command.CommandFactory;
 import commandParser.CommandParser;
 import database.Database;
 import exceptions.ImproperlyConfigured;
-import commandParser.commandValidChecker.Option3Checker;
-import commandParser.commandValidChecker.OptionValidChecker;
-import commandParser.commandValidChecker.PrintOptionChecker;
-import commandParser.commandValidChecker.CompareOptionChecker;
+import commandParser.commandValidChecker.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
