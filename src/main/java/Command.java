@@ -1,18 +1,17 @@
+import exceptions.ImproperlyConfigured;
 import option.Option;
+import employee.Employee;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Command {
-    DatabaseInterface databaseInterface;
+    DatabaseInterface database;
     Option option;
     List<String> params;
 
     public Command() {
-        this.databaseInterface = new Database();
-    }
-
-    public String print(List<Employee> records) {
-        return "";
+        this.database = new Database();
     }
 
     public List<String> getParams() {
@@ -23,10 +22,6 @@ public abstract class Command {
         this.params = params;
     }
 
-    public void setDatabaseInterface(DatabaseInterface databaseInterface) {
-        this.databaseInterface = databaseInterface;
-    }
-
     public Option getOption() {
         return option;
     }
@@ -35,6 +30,11 @@ public abstract class Command {
         this.option = option;
     }
 
+    public String print(ArrayList<Employee> records) {
+        System.out.println(option.printOption.report(records));;
+    }
+
     public abstract String getCommandType();
-    public abstract void run();
+
+    public abstract void run() throws ImproperlyConfigured;
 }

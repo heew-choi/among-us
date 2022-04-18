@@ -1,9 +1,7 @@
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import parserValidChecker.Option3Checker;
 import parserValidChecker.OptionValidChecker;
 import parserValidChecker.PrintOptionChecker;
-import parserValidChecker.SearchOptionChecker;
+import parserValidChecker.CompareOptionChecker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -22,7 +20,7 @@ class CommandParserTest {
         List<String> commandList = Arrays.asList("ADD", "DEL", "SCH", "MOD");
         List<OptionValidChecker> optionCheckerList = new ArrayList<>();
         optionCheckerList.add(new PrintOptionChecker());
-        optionCheckerList.add(new SearchOptionChecker());
+        optionCheckerList.add(new CompareOptionChecker());
         optionCheckerList.add(new Option3Checker());
 
         tester = new CommandParser(",", commandList, optionCheckerList);
