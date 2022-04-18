@@ -1,12 +1,13 @@
 import exceptions.ImproperlyConfigured;
-import option.Option;
-import employee.Employee;
+import database.*;
+import option.*;
+import employee.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Command {
-    DatabaseInterface database;
+    Database database;
     Option option;
     List<String> params;
 
