@@ -3,6 +3,7 @@ package option.printOption;
 import employee.Employee;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class ListPrintOption implements IPrintOption {
 
@@ -14,23 +15,9 @@ public class ListPrintOption implements IPrintOption {
             return "NONE";
 
         StringBuffer result = new StringBuffer();
-        int i = 0;
-        for (Employee employee : employees) {
-
-            try {
-//                result += employees.toString();;
-//                result.append(employee.toString());
+        for (Employee employee : employees.stream().limit(PRINT_LIMIT).collect(Collectors.toList())) {
                 result.append(commandName + ',' + employee.toString() + '\n');
-            } catch (NullPointerException e) {
-                ;
-                // 예외 처리 정책 수립 필요
-            }
-
-            i++;
-            if (i >= PRINT_LIMIT)
-                break;
         }
-
         return result.toString();
     }
 }
