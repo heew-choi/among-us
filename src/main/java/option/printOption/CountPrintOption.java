@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class CountPrintOption implements IPrintOption {
 
     @Override
-    public String report(ArrayList<Employee> employees) {
+    public String report(ArrayList<Employee> employees, String commandName) {
         if (employees.size() == 0)
             return "NONE";
 
