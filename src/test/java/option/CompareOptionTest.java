@@ -24,7 +24,7 @@ public class CompareOptionTest {
 
     @Test
     void 기본_비교_옵션_테스트() throws ImproperlyConfigured {
-        assertEquals(true, new DefaultCompareOption().compare(employee));
+        assertEquals(false, new DefaultCompareOption().compare(employee));
     }
 
     @Test
