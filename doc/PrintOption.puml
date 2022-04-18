@@ -1,15 +1,15 @@
 @startuml
-interface IPrintOption {
-~ String Report(ArrayList<Employee>)
+class option.printOption.CountPrintOption {
++ String report(ArrayList<Employee>,String)
 }
-class PrintCountOption {
-+ String Report(ArrayList<Employee>)
+class option.printOption.ListPrintOption {
++ String report(ArrayList<Employee>,String)
 }
-class PrintListOption {
-+ String Report(ArrayList<Employee>)
+interface option.printOption.IPrintOption {
+~ String report(ArrayList<Employee>,String)
 }
 
 
-IPrintOption <|.. PrintCountOption
-IPrintOption <|.. PrintListOption
+option.printOption.IPrintOption <|.. option.printOption.CountPrintOption
+option.printOption.IPrintOption <|.. option.printOption.ListPrintOption
 @enduml
