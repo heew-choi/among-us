@@ -14,7 +14,7 @@ public class ListPrintOption implements IPrintOption {
         if (employees.size() == 0)
             return "NONE";
 
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         for (Employee employee : employees.stream().limit(PRINT_LIMIT).collect(Collectors.toList())) {
                 result.append(commandName + ',' + employee.toString() + '\n');
         }
