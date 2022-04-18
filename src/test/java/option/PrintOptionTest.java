@@ -31,7 +31,7 @@ public class PrintOptionTest {
     void 카운트_프린트_옵션_기본_테스트() {
         String commandName = "SCH";
         CountPrintOption countPrintOption = new CountPrintOption();
-        String expectedResult = "6";
+        String expectedResult = "SCH,6";
         assertEquals(expectedResult, countPrintOption.report(employees, commandName));
     }
 
@@ -39,11 +39,11 @@ public class PrintOptionTest {
     void 리스트_프린트_옵션_기본_테스트() {
         String commandName = "SCH";
         ListPrintOption listPrintOption = new ListPrintOption();
-        String expectedResult = "SCH,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\n" +
-                "SCH,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO\n" +
-                "SCH,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV\n" +
-                "SCH,88114052,NQ LVARW,CL4,010-4528-3059,19500101,PRO\n" +
-                "SCH,19129568,SRERLALH HMEF,CL2,010-3091-9521,19640910,PRO\n";
+        String expectedResult = "SCH,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\r\n" +
+                "SCH,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO\r\n" +
+                "SCH,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV\r\n" +
+                "SCH,88114052,NQ LVARW,CL4,010-4528-3059,19500101,PRO\r\n" +
+                "SCH,19129568,SRERLALH HMEF,CL2,010-3091-9521,19640910,PRO";
         assertEquals(expectedResult, listPrintOption.report(employees, commandName));
     }
 
@@ -53,7 +53,7 @@ public class PrintOptionTest {
 
         String commandName = "SCH";
         CountPrintOption countPrintOption = new CountPrintOption();
-        String expectedResult = "NONE";
+        String expectedResult = "SCH,NONE";
         assertEquals(expectedResult, countPrintOption.report(zeroEmployees, commandName));
     }
 
@@ -63,7 +63,7 @@ public class PrintOptionTest {
 
         String commandName = "SCH";
         ListPrintOption listPrintOption = new ListPrintOption();
-        String expectedResult = "NONE";
+        String expectedResult = "SCH,NONE";
         assertEquals(expectedResult, listPrintOption.report(zeroEmployees, commandName));
     }
 }
