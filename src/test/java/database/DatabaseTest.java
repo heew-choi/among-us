@@ -2,10 +2,7 @@ package database;
 
 import employee.*;
 import exceptions.ImproperlyConfigured;
-import option.compareOption.FirstNameCompareOption;
-import option.compareOption.LastNameCompareOption;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,8 +21,7 @@ class DatabaseTest {
     }
 
     @Test
-    @DisplayName("Insert 테스트")
-    void insertTest() throws ImproperlyConfigured {
+    void Insert_Test() throws ImproperlyConfigured {
         assertEquals(3, db.select().size(), "Insert 전 Size");
         db.insert(testEmployee);
         assertEquals(4, db.select().size(), "Insert 후 size");
@@ -37,8 +33,7 @@ class DatabaseTest {
     }
 
     @Test
-    @DisplayName("중복 사번 Insert 테스트")
-    void duplicateEmployeeNumberInsertTest() throws ImproperlyConfigured {
+    void 중복_사번_Insert_테스트() throws ImproperlyConfigured {
         assertEquals(3, db.select().size(), "Insert 전 Size");
         db.insert(new Employee("20020202", "DUPLI KIM", "CL2", "010-1111-2222", "19901221", "EX"));
         assertEquals(3, db.select().size(), "Insert 후 size");
@@ -48,21 +43,20 @@ class DatabaseTest {
     }
 
     @Test
-    @DisplayName("Update 테스트")
-    void updateTest() {
+    void Update_테스트() throws ImproperlyConfigured {
         Employee targetEmployee = db.select().get(0);
-        assertEquals("ADV", targetEmployee.getCerti().toString(), "Update 전 데이터의 certi값");
+        assertEquals("PRO", targetEmployee.getCerti().toString(), "Update 전 데이터의 certi값");
         System.out.println(targetEmployee.toString());
-        db.update(0, targetEmployee);
-        assertEquals("PRO", targetEmployee.getCerti().toString(), "Update 후 데이터의 certi값");
+        Employee changedEmployee = new Employee(targetEmployee.getEmployeeNum().toString(), targetEmployee.getName().toString(), targetEmployee.getCl().toString(),targetEmployee.getPhoneNum().toString(), targetEmployee.getBirthday().toString(), "EX");
+        db.update(targetEmployee, changedEmployee);
+        assertEquals("EX", targetEmployee.getCerti().toString(), "Update 후 데이터의 certi값");
         System.out.println(targetEmployee.toString());
     }
 
     @Test
-    @DisplayName("Delete 테스트")
-    void deleteTest() {
+    void Delete_테스트() {
         assertEquals(3, db.select().size(), "Delete 전 size");
-        db.delete(0);
+        db.delete(db.select().get(0));
         assertEquals(2, db.select().size(), "Delete 후 size");
     }
 }

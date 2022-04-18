@@ -3,6 +3,7 @@ package database;
 import employee.Employee;
 import employee.EmployeeNumber;
 import option.compareOption.CompareOption;
+import option.compareOption.EmployeeNumberCompareOption;
 import option.compareOption.LastNameCompareOption;
 
 import java.util.ArrayList;
@@ -25,8 +26,8 @@ public class Database {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public void delete(int index) {
-        employees.remove(index);
+    public void delete(Employee employee) {
+        employees.remove(employee);
     }
 
     public void insert(Employee employee) {
@@ -34,19 +35,18 @@ public class Database {
         employees.add(getInsertPosition(employee), employee);
     }
 
-    public void update(int index, Employee employee) {
-        Employee targetEmployee = employees.get(index);
+    public void update(Employee targetEmployee, Employee changedEmployee) {
         if (targetEmployee.isValid()) {
-            targetEmployee.setName(employee.getName());
-            targetEmployee.setCl(employee.getCl());
-            targetEmployee.setPhoneNum(employee.getPhoneNum());
-            targetEmployee.setBirthday(employee.getBirthday());
-            targetEmployee.setCerti(employee.getCerti());
+            targetEmployee.setName(changedEmployee.getName());
+            targetEmployee.setCl(changedEmployee.getCl());
+            targetEmployee.setPhoneNum(changedEmployee.getPhoneNum());
+            targetEmployee.setBirthday(changedEmployee.getBirthday());
+            targetEmployee.setCerti(changedEmployee.getCerti());
         }
     }
 
     private boolean isDuplicateEmployeeNumber(EmployeeNumber employeeNumber) {
-        return employees.stream().filter(emp -> emp.getEmployeeNum().toString().equals(employeeNumber.toString())).collect(Collectors.toCollection(ArrayList::new)).size() > 0;
+        return select(new EmployeeNumberCompareOption(employeeNumber.toString())).size() > 0;
     }
 
     private int getInsertPosition(Employee employee) {
