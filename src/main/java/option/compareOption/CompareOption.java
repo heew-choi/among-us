@@ -7,7 +7,10 @@ import java.util.ArrayList;
 public abstract class CompareOption {
     protected String query;
 
-    CompareOption(String query) {
+    public CompareOption() {
+    }
+
+    public CompareOption(String query) {
         this.query = query;
     }
 

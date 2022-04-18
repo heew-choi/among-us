@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class ListPrintOption implements IPrintOption {
 
+    final int PRINT_LIMIT = 5;
+
     @Override
     public String report(ArrayList<Employee> employees, String commandName) {
         if (employees.size() == 0)
@@ -25,7 +27,7 @@ public class ListPrintOption implements IPrintOption {
             }
 
             i++;
-            if (i >= 5)
+            if (i >= PRINT_LIMIT)
                 break;
         }
 

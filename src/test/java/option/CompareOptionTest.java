@@ -33,6 +33,18 @@ public class CompareOptionTest {
     }
 
     @Test
+    void 기본_비교_옵션_테스트() throws ImproperlyConfigured {
+        CompareOption compareOption;
+        compareOption = new DefaultCompareOption();
+        String expectedResult = "SCH,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\n" +
+                "SCH,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO\n" +
+                "SCH,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV\n" +
+                "SCH,88114052,NQ LVARW,CL4,010-4528-3059,19500101,PRO\n" +
+                "SCH,19129568,SRERLALH HMEF,CL2,010-3091-9521,19640910,PRO\n";
+        assertEquals(expectedResult, listPrintOption.report(compareOption.filter(employees), commandName));
+    }
+
+    @Test
     void 사원번호_비교_옵션_테스트() throws ImproperlyConfigured {
         CompareOption compareOption;
         compareOption = new EmployeeNumberCompareOption("15123099");
