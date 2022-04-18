@@ -34,14 +34,13 @@ public class Database {
         employees.add(getInsertPosition(employee), employee);
     }
 
-    public void update(int index, Employee employee) {
-        Employee targetEmployee = employees.get(index);
+    public void update(Employee targetEmployee, Employee changedEmployee) {
         if (targetEmployee.isValid()) {
-            targetEmployee.setName(employee.getName());
-            targetEmployee.setCl(employee.getCl());
-            targetEmployee.setPhoneNum(employee.getPhoneNum());
-            targetEmployee.setBirthday(employee.getBirthday());
-            targetEmployee.setCerti(employee.getCerti());
+            targetEmployee.setName(changedEmployee.getName());
+            targetEmployee.setCl(changedEmployee.getCl());
+            targetEmployee.setPhoneNum(changedEmployee.getPhoneNum());
+            targetEmployee.setBirthday(changedEmployee.getBirthday());
+            targetEmployee.setCerti(changedEmployee.getCerti());
         }
     }
 

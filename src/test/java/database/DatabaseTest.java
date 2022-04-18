@@ -47,12 +47,13 @@ class DatabaseTest {
 
     @Test
     @DisplayName("Update 테스트")
-    void updateTest() {
+    void updateTest() throws ImproperlyConfigured {
         Employee targetEmployee = db.select().get(0);
-        assertEquals("ADV", targetEmployee.getCerti().toString(), "Update 전 데이터의 certi값");
+        assertEquals("PRO", targetEmployee.getCerti().toString(), "Update 전 데이터의 certi값");
         System.out.println(targetEmployee.toString());
-        db.update(0, targetEmployee);
-        assertEquals("PRO", targetEmployee.getCerti().toString(), "Update 후 데이터의 certi값");
+        Employee changedEmployee = new Employee(targetEmployee.getEmployeeNum().toString(), targetEmployee.getName().toString(), targetEmployee.getCl().toString(),targetEmployee.getPhoneNum().toString(), targetEmployee.getBirthday().toString(), "EX");
+        db.update(targetEmployee, changedEmployee);
+        assertEquals("EX", targetEmployee.getCerti().toString(), "Update 후 데이터의 certi값");
         System.out.println(targetEmployee.toString());
     }
 
