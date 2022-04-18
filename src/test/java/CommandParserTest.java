@@ -1,3 +1,4 @@
+import database.Database;
 import parserValidChecker.Option3Checker;
 import parserValidChecker.OptionValidChecker;
 import parserValidChecker.PrintOptionChecker;
@@ -22,8 +23,9 @@ class CommandParserTest {
         optionCheckerList.add(new PrintOptionChecker());
         optionCheckerList.add(new CompareOptionChecker());
         optionCheckerList.add(new Option3Checker());
+        CommandFactory commandFactory = new CommandFactory(new Database());
 
-        tester = new CommandParser(",", commandList, optionCheckerList);
+        tester = new CommandParser(",", commandList, optionCheckerList, commandFactory);
     }
 
     @Nested

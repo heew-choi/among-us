@@ -1,9 +1,14 @@
+import database.Database;
 import employee.Employee;
 
 import java.util.ArrayList;
 
 public class SearchCommand extends Command {
     public ArrayList<Employee> testResult;
+
+    public SearchCommand(Database database) {
+        super(database);
+    }
 
     @Override
     public String getCommandType() {

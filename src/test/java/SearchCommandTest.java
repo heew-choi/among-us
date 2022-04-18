@@ -1,3 +1,4 @@
+import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
 import option.Option;
@@ -15,7 +16,7 @@ class SearchCommandTest {
 
     @BeforeEach
     void setup() {
-        tester = new SearchCommand();
+        tester = new SearchCommand(new Database());
     }
 
     @Test

@@ -1,3 +1,4 @@
+import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
 import option.Option;
@@ -12,7 +13,7 @@ class DeleteCommandTest {
 
     @BeforeEach
     void setup() {
-        tester = new DeleteCommand();
+        tester = new DeleteCommand(new Database());
     }
 
     @Test

@@ -1,3 +1,4 @@
+import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
 import option.Option;
@@ -21,7 +22,7 @@ class AddCommandTest {
     @BeforeEach
     void setup() {
         Option option = new Option(new CountPrintOption(), new DefaultCompareOption());
-        tester = new AddCommand();
+        tester = new AddCommand(new Database());
         tester.setOption(option);
     }
 
