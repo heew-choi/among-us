@@ -1,7 +1,27 @@
+import parserValidChecker.Option3Checker;
+import parserValidChecker.OptionValidChecker;
+import parserValidChecker.PrintOptionChecker;
+import parserValidChecker.SearchOptionChecker;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class EmployeeManager {
-    private CommandParser commandParser;
+    private final CommandParser commandParser;
 
-    private void runCommand(String line) {
+    public EmployeeManager() {
+        List<String> commandList = Arrays.asList("ADD", "DEL", "SCH", "MOD");
+        List<OptionValidChecker> optionCheckerList = new ArrayList<>();
+        optionCheckerList.add(new PrintOptionChecker());
+        optionCheckerList.add(new SearchOptionChecker());
+        optionCheckerList.add(new Option3Checker());
 
+        commandParser = new CommandParser(",", commandList, optionCheckerList);
+    }
+
+    public void runCommand(String line) {
+        Command command = commandParser.parseCommand(line);
+        command.run();
     }
 }
