@@ -5,7 +5,7 @@ import exceptions.ImproperlyConfigured;
 public class CertificationLevel extends EmployeeField {
     private String certi;
 
-    protected CertificationLevel(String certi) throws ImproperlyConfigured {
+    public CertificationLevel(String certi) throws ImproperlyConfigured {
         super(certi);
         this.certi = certi;
     }
