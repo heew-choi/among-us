@@ -8,11 +8,16 @@ import java.util.ArrayList;
 
 public class Logger {
     private static File file = null;
-    private static final String OUTPUT_FILE_PATH = "output.txt";
+    private static final String DEFAULT_OUTPUT_FILE_PATH = "output.txt";
+    private static String outputFilePath = null;
     private static ArrayList<String> printBuffer = new ArrayList<>();
 
     private Logger() {
         throw new IllegalStateException("Utility class");
+    }
+
+    public static void setOutputFilePath(String outputFilePath) {
+        Logger.outputFilePath = outputFilePath;
     }
 
     public static void logConsole(String message) {
@@ -62,7 +67,9 @@ public class Logger {
 
     private static boolean getOrCreateFile() {
         if (file == null) {
-            file = new File(OUTPUT_FILE_PATH);
+            if (outputFilePath == null)
+                setOutputFilePath(DEFAULT_OUTPUT_FILE_PATH);
+            file = new File(outputFilePath);
             if (!file.exists()) {
                 try {
                     file.createNewFile();
