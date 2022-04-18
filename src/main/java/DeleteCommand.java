@@ -20,8 +20,7 @@ public class DeleteCommand extends Command {
 
             // 2. 삭제 요청
             for (Employee targetEmp : targetEmpList) {
-//                database.delete(targetEmp);
-                database.delete(0); // for unit test
+                database.delete(targetEmp);
             }
             print(targetEmpList);
         }

@@ -91,7 +91,7 @@ public class CommandParser {
             if (option.equals("-f"))
                 return new FirstNameCompareOption(params.get(1));
             if (option.equals("-l"))
-                return new FirstNameCompareOption(params.get(1));
+                return new LastNameCompareOption(params.get(1));
             return new NameCompareOption(params.get(1));
         }
 
