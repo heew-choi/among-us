@@ -1,9 +1,12 @@
+import command.Command;
+import command.CommandFactory;
+import commandParser.CommandParser;
 import database.Database;
 import exceptions.ImproperlyConfigured;
-import parserValidChecker.Option3Checker;
-import parserValidChecker.OptionValidChecker;
-import parserValidChecker.PrintOptionChecker;
-import parserValidChecker.CompareOptionChecker;
+import commandParser.commandValidChecker.Option3Checker;
+import commandParser.commandValidChecker.OptionValidChecker;
+import commandParser.commandValidChecker.PrintOptionChecker;
+import commandParser.commandValidChecker.CompareOptionChecker;
 
 import java.util.ArrayList;
 import java.util.Arrays;

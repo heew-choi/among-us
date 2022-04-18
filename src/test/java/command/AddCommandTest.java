@@ -1,3 +1,6 @@
+package command;
+
+import command.AddCommand;
 import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
@@ -27,13 +30,13 @@ class AddCommandTest {
     }
 
     @Test
-    @DisplayName("Command Type 확인")
+    @DisplayName("command.Command Type 확인")
     void getCommandType() {
         assertEquals("ADD", tester.getCommandType());
     }
 
     @Nested
-    @DisplayName("Command 실행")
+    @DisplayName("command.Command 실행")
     class runTest {
 
         @ParameterizedTest
@@ -49,9 +52,9 @@ class AddCommandTest {
             List<String> params = Arrays.asList(paramStr.split("/"));
             tester.setParams(params);
 
-            int initCount = tester.database.select().size();
+            int initCount = tester.getDatabase().select().size();
             tester.run();
-            assertEquals(initCount + 1, tester.database.select().size());
+            assertEquals(initCount + 1, tester.getDatabase().select().size());
         }
 
         @ParameterizedTest
@@ -61,15 +64,15 @@ class AddCommandTest {
                 "17112609/FB NTAWR/CL4/010-5645-6122/19861203/PRO"
         })
         void run_normal_duplicated(String paramStr) throws ImproperlyConfigured {
-            tester.database.insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
-            tester.database.insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
+            tester.getDatabase().insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
+            tester.getDatabase().insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
 
             List<String> params = Arrays.asList(paramStr.split("/"));
             tester.setParams(params);
 
-            int initCount = tester.database.select().size();
+            int initCount = tester.getDatabase().select().size();
             tester.run();
-            assertEquals(initCount, tester.database.select().size());
+            assertEquals(initCount, tester.getDatabase().select().size());
         }
 
     }

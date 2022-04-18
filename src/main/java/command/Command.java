@@ -1,3 +1,5 @@
+package command;
+
 import exceptions.ImproperlyConfigured;
 import database.*;
 import option.*;
@@ -8,12 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Command {
-    Database database;
-    Option option;
-    List<String> params;
+    protected Database database;
+    protected Option option;
+    protected List<String> params;
 
     public Command(Database database) {
         this.database = database;
+    }
+
+    public Database getDatabase() {
+        return database;
     }
 
     public List<String> getParams() {
@@ -32,7 +38,7 @@ public abstract class Command {
         this.option = option;
     }
 
-    public void print(ArrayList<Employee> records) {
+    protected void print(ArrayList<Employee> records) {
         Logger.appendLog(option.printOption.report(records, getCommandType()));
     }
 

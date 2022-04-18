@@ -1,3 +1,6 @@
+package command;
+
+import command.SearchCommand;
 import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
@@ -20,20 +23,20 @@ class SearchCommandTest {
     }
 
     @Test
-    @DisplayName("Command Type 확인")
+    @DisplayName("command.Command Type 확인")
     void getCommandType() {
         assertEquals("SCH", tester.getCommandType());
     }
 
     @Nested
-    @DisplayName("Command 실행")
+    @DisplayName("command.Command 실행")
     class runTest {
 
         @Test
         @DisplayName("정상 Case : 검색 성공")
         void run_normal() throws ImproperlyConfigured {
-            tester.database.insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
-            tester.database.insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
+            tester.getDatabase().insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
+            tester.getDatabase().insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
 
             Option option = new Option(new CountPrintOption(), new EmployeeNumberCompareOption("15123099"));
             tester.setOption(option);
@@ -45,8 +48,8 @@ class SearchCommandTest {
         @Test
         @DisplayName("정상 Case : 검색 실패")
         void run_normal_not_fount() throws ImproperlyConfigured {
-            tester.database.insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
-            tester.database.insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
+            tester.getDatabase().insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
+            tester.getDatabase().insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
 
             Option option = new Option(new CountPrintOption(), new EmployeeNumberCompareOption("18051268"));
             tester.setOption(option);

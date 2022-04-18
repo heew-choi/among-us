@@ -1,3 +1,5 @@
+package command;
+
 import database.Database;
 import employee.Employee;
 

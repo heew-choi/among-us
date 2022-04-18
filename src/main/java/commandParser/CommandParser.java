@@ -1,8 +1,12 @@
-import database.Database;
+package commandParser;
+
+import command.Command;
+import command.CommandFactory;
+import commandParser.commandValidChecker.CommandTypeChecker;
+import commandParser.commandValidChecker.OptionValidChecker;
 import option.Option;
 import option.compareOption.*;
 import option.printOption.*;
-import parserValidChecker.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
