@@ -1,0 +1,40 @@
+@startuml
+class option.compareOption.DefaultCompareOption {
++ ArrayList<Employee> filter(ArrayList<Employee>)
+}
+class option.compareOption.BirthdayDayCompareOption {
++ ArrayList<Employee> filter(ArrayList<Employee>)
+}
+class option.compareOption.LastNameCompareOption {
++ ArrayList<Employee> filter(ArrayList<Employee>)
+}
+abstract class option.compareOption.CompareOption {
+# String query
++ {abstract}ArrayList<Employee> filter(ArrayList<Employee>)
+}
+class option.compareOption.FirstNameCompareOption {
++ ArrayList<Employee> filter(ArrayList<Employee>)
+}
+class option.compareOption.MiddlePhoneNumberCompareOption {
++ ArrayList<Employee> filter(ArrayList<Employee>)
+}
+class option.compareOption.LastPhoneNumberCompareOption {
++ ArrayList<Employee> filter(ArrayList<Employee>)
+}
+class option.compareOption.BirthdayMonthCompareOption {
++ ArrayList<Employee> filter(ArrayList<Employee>)
+}
+class option.compareOption.BirthdayYearCompareOption {
++ ArrayList<Employee> filter(ArrayList<Employee>)
+}
+
+
+option.compareOption.CompareOption <|-- option.compareOption.DefaultCompareOption
+option.compareOption.CompareOption <|-- option.compareOption.BirthdayDayCompareOption
+option.compareOption.CompareOption <|-- option.compareOption.LastNameCompareOption
+option.compareOption.CompareOption <|-- option.compareOption.FirstNameCompareOption
+option.compareOption.CompareOption <|-- option.compareOption.MiddlePhoneNumberCompareOption
+option.compareOption.CompareOption <|-- option.compareOption.LastPhoneNumberCompareOption
+option.compareOption.CompareOption <|-- option.compareOption.BirthdayMonthCompareOption
+option.compareOption.CompareOption <|-- option.compareOption.BirthdayYearCompareOption
+@enduml

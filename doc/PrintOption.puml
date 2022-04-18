@@ -1,0 +1,15 @@
+@startuml
+interface IPrintOption {
+~ String Report(ArrayList<Employee>)
+}
+class PrintCountOption {
++ String Report(ArrayList<Employee>)
+}
+class PrintListOption {
++ String Report(ArrayList<Employee>)
+}
+
+
+IPrintOption <|.. PrintCountOption
+IPrintOption <|.. PrintListOption
+@enduml
