@@ -3,7 +3,7 @@ package parserValidChecker;
 import java.util.List;
 import java.util.Objects;
 
-public class SearchOptionChecker extends OptionValidChecker {
+public class CompareOptionChecker extends OptionValidChecker {
     @Override
     public boolean isValid(String option, List<String> params) {
         if (option.trim().isEmpty()) {
