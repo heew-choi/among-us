@@ -85,27 +85,27 @@ public class CommandParser {
 
     private CompareOption getCompareOption(String option, List<String> params) {
         if (option.equals("-f") && Objects.equals(params.get(0), "name")) {
-            return new FirstNameCompareOption("");
+            return new FirstNameCompareOption(params.get(1));
         }
         else if (option.equals("-l") && Objects.equals(params.get(0), "name")) {
-            return new LastNameCompareOption("");
+            return new LastNameCompareOption(params.get(1));
         }
         else if (option.equals("-m") && Objects.equals(params.get(0), "phoneNum")) {
-            return new MiddlePhoneNumberCompareOption("");
+            return new MiddlePhoneNumberCompareOption(params.get(1));
         }
         else if (option.equals("-l") && Objects.equals(params.get(0), "phoneNum")) {
-            return new LastPhoneNumberCompareOption("");
+            return new LastPhoneNumberCompareOption(params.get(1));
         }
         else if (option.equals("-y") && Objects.equals(params.get(0), "birthday")) {
-            return new BirthdayYearCompareOption("");
+            return new BirthdayYearCompareOption(params.get(1));
         }
         else if (option.equals("-m") && Objects.equals(params.get(0), "birthday")) {
-            return new BirthdayMonthCompareOption("");
+            return new BirthdayMonthCompareOption(params.get(1));
         }
         else if (option.equals("-d") && Objects.equals(params.get(0), "birthday")) {
-            return new BirthdayDayCompareOption("");
+            return new BirthdayDayCompareOption(params.get(1));
         }
-        return new DefaultCompareOption("");
+        return new DefaultCompareOption();
     }
 
 }
