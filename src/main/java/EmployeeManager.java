@@ -1,3 +1,4 @@
+import exceptions.ImproperlyConfigured;
 import parserValidChecker.Option3Checker;
 import parserValidChecker.OptionValidChecker;
 import parserValidChecker.PrintOptionChecker;
@@ -20,7 +21,7 @@ public class EmployeeManager {
         commandParser = new CommandParser(",", commandList, optionCheckerList);
     }
 
-    public void runCommand(String line) {
+    public void runCommand(String line) throws ImproperlyConfigured {
         Command command = commandParser.parseCommand(line);
         // command.run();
     }
