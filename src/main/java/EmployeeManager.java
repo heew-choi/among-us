@@ -1,7 +1,8 @@
+import exceptions.ImproperlyConfigured;
 import parserValidChecker.Option3Checker;
 import parserValidChecker.OptionValidChecker;
 import parserValidChecker.PrintOptionChecker;
-import parserValidChecker.SearchOptionChecker;
+import parserValidChecker.CompareOptionChecker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,13 +15,13 @@ public class EmployeeManager {
         List<String> commandList = Arrays.asList("ADD", "DEL", "SCH", "MOD");
         List<OptionValidChecker> optionCheckerList = new ArrayList<>();
         optionCheckerList.add(new PrintOptionChecker());
-        optionCheckerList.add(new SearchOptionChecker());
+        optionCheckerList.add(new CompareOptionChecker());
         optionCheckerList.add(new Option3Checker());
 
         commandParser = new CommandParser(",", commandList, optionCheckerList);
     }
 
-    public void runCommand(String line) {
+    public void runCommand(String line) throws ImproperlyConfigured {
         Command command = commandParser.parseCommand(line);
         command.run();
     }
