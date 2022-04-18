@@ -29,7 +29,7 @@ public class Name extends EmployeeField {
         this.lastName = lastName;
     }
 
-
+    @Override
     public String toString() {
         return firstName + " " + lastName;
     }
@@ -42,7 +42,7 @@ public class Name extends EmployeeField {
     }
 
     @Override
-    protected boolean isValidString(String inputString) {
+    public boolean isValidString(String inputString) {
         return inputString.length() <= 15 && inputString.matches("[A-Z]+\\s[A-Z]+");
     }
 }

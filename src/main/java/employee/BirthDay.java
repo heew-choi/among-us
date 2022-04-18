@@ -38,6 +38,7 @@ public class BirthDay extends EmployeeField {
         this.day = day;
     }
 
+    @Override
     public String toString() {
         return year + month + day;
     }
@@ -54,7 +55,7 @@ public class BirthDay extends EmployeeField {
     }
 
     @Override
-    protected boolean isValidString(String inputString) {
+    public boolean isValidString(String inputString) {
         return inputString.matches("\\d{8}");
     }
 

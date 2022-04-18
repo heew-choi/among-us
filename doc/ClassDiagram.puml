@@ -33,14 +33,22 @@ class EmployeeNumber {
     - String shortNumber
 }
 
+class CertificationLevel {
+    - String certi
+}
+
+class CareerLevel {
+    - String cl
+}
+
 class Employee {
     -int id
     -EmployeeNumber employeeNum
     -Name name
-    -String cl
+    -CareerLevel cl
     -PhoneNumber phoneNum
     -BirthDay birthday
-    -String certi
+    -CertificationLevel certi
 
 '    + getFirstName()
 '    + getLastName()
@@ -48,9 +56,7 @@ class Employee {
 
 class EmployeeField {
     + isValidString(String inputString): boolean
-}
-
-interface EmployeeFieldValidator {
+    + toString(): String
     + isValid(): boolean
 }
 
@@ -146,12 +152,15 @@ Employee *-- PhoneNumber
 Employee *-- Name
 Employee *-- BirthDay
 Employee *-- EmployeeNumber
+Employee *-- CareerLevel
+Employee *-- CertificationLevel
 
 PhoneNumber --|> EmployeeField
 Name --|> EmployeeField
 BirthDay --|> EmployeeField
 EmployeeNumber --|> EmployeeField
+CareerLevel --|> EmployeeField
+CertificationLevel --|> EmployeeField
 
-EmployeeField --|> EmployeeFieldValidator
 
 @enduml
