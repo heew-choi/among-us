@@ -1,3 +1,4 @@
+import database.Database;
 import exceptions.ImproperlyConfigured;
 import parserValidChecker.Option3Checker;
 import parserValidChecker.OptionValidChecker;
@@ -17,8 +18,9 @@ public class EmployeeManager {
         optionCheckerList.add(new PrintOptionChecker());
         optionCheckerList.add(new CompareOptionChecker());
         optionCheckerList.add(new Option3Checker());
+        CommandFactory commandFactory = new CommandFactory(new Database());
 
-        commandParser = new CommandParser(",", commandList, optionCheckerList);
+        commandParser = new CommandParser(",", commandList, optionCheckerList, commandFactory);
     }
 
     public void runCommand(String line) throws ImproperlyConfigured {

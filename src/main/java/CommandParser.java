@@ -1,10 +1,8 @@
+import database.Database;
 import option.Option;
 import option.compareOption.*;
-import option.printOption.CountPrintOption;
-import option.printOption.IPrintOption;
-import option.printOption.ListPrintOption;
-import parserValidChecker.CommandTypeChecker;
-import parserValidChecker.OptionValidChecker;
+import option.printOption.*;
+import parserValidChecker.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,11 +15,13 @@ public class CommandParser {
     private final String delimiter;
     private final CommandTypeChecker commandTypeChecker;
     private final List<OptionValidChecker> optionCheckerList;
+    private CommandFactory commandFactory;
 
-    public CommandParser(String delimiter, List<String> commandList, List<OptionValidChecker> optionCheckerList) {
+    public CommandParser(String delimiter, List<String> commandList, List<OptionValidChecker> optionCheckerList, CommandFactory commandFactory) {
         this.delimiter = delimiter;
         this.commandTypeChecker = new CommandTypeChecker(commandList);
         this.optionCheckerList = optionCheckerList;
+        this.commandFactory = commandFactory;
     }
 
     public Command parseCommand(String line) {
@@ -35,7 +35,7 @@ public class CommandParser {
             List<String> params = tokens.subList(optionCheckerList.size() + 1, tokens.size());
             checkArgsValidation(commandType, options, params);
 
-            Command command = CommandFactory.getCommand(commandType);
+            Command command = commandFactory.getCommand(commandType);
             command.setParams(new ArrayList<String>(params));
             command.setOption(getCommandOption(options, params));
 
@@ -77,7 +77,7 @@ public class CommandParser {
     }
 
     private IPrintOption getPritnOption(String printOption, List<String> params) {
-        if (printOption == "-p") {
+        if (printOption.equals("-p")) {
             return new ListPrintOption();
         }
         return new CountPrintOption();

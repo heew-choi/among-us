@@ -12,8 +12,8 @@ public abstract class Command {
     Option option;
     List<String> params;
 
-    public Command() {
-        this.database = new Database();
+    public Command(Database database) {
+        this.database = database;
     }
 
     public List<String> getParams() {

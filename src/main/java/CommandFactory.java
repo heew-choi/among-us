@@ -1,15 +1,22 @@
-public class CommandFactory {
+import database.Database;
 
-    public static Command getCommand(String commandType) {
+public class CommandFactory {
+    private Database database;
+
+    public CommandFactory(Database database) {
+        this.database = database;
+    }
+
+    public Command getCommand(String commandType) {
         switch (commandType) {
             case "ADD":
-                return new AddCommand();
+                return new AddCommand(database);
             case "DEL":
-                return new DeleteCommand();
+                return new DeleteCommand(database);
             case "SCH":
-                return new SearchCommand();
+                return new SearchCommand(database);
             case "MOD":
-                return new ModifyCommand();
+                return new ModifyCommand(database);
             default:
                 return null;
         }

@@ -1,3 +1,4 @@
+import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
 import option.Option;
@@ -14,7 +15,7 @@ class ModifyCommandTest {
 
     @BeforeEach
     void setup() {
-        tester = new ModifyCommand();
+        tester = new ModifyCommand(new Database());
     }
 
     @Test

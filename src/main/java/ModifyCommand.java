@@ -1,9 +1,14 @@
+import database.Database;
 import employee.*;
 import exceptions.ImproperlyConfigured;
 
 import java.util.ArrayList;
 
 public class ModifyCommand extends Command {
+    public ModifyCommand(Database database) {
+        super(database);
+    }
+
     @Override
     public String getCommandType() {
         return "MOD";

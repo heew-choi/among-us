@@ -1,8 +1,13 @@
+import database.Database;
 import employee.Employee;
 
 import java.util.ArrayList;
 
 public class DeleteCommand extends Command {
+    public DeleteCommand(Database database) {
+        super(database);
+    }
+
     @Override
     public String getCommandType() {
         return "DEL";

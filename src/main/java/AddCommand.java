@@ -1,3 +1,4 @@
+import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
 
@@ -6,6 +7,10 @@ import java.util.List;
 
 public class AddCommand extends Command {
     public ArrayList<Employee> testResult;
+
+    public AddCommand(Database database) {
+        super(database);
+    }
 
     @Override
     public String getCommandType() {
