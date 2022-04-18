@@ -14,5 +14,5 @@ public abstract class CompareOption {
         this.query = query;
     }
 
-    public abstract ArrayList<Employee> filter(ArrayList<Employee> employees);
+    public abstract boolean compare(Employee employee);
 }

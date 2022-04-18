@@ -12,9 +12,7 @@ public class CareerLevelCompareOption extends CompareOption {
     }
 
     @Override
-    public ArrayList<Employee> filter(ArrayList<Employee> employees) {
-        return employees.stream()
-                .filter(employee -> employee.getCl().toString().equals(query))
-                .collect(Collectors.toCollection(ArrayList::new));
+    public boolean compare(Employee employee) {
+        return employee.getCl().toString().equals(query);
     }
 }
