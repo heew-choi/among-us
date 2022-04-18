@@ -84,15 +84,12 @@ class CommandParser {
     +parseCommand(String line): Command
 }
 
-
-interface DatabaseInterface {
+class Database {
+    +select(): ArrayList<Employee>
     +select(Employee employee): ArrayList<Employee>
     +insert(Employee employee): ArrayList<Employee>
     +delete(int id): ArrayList<Employee>
     +update(int id, Employee employee): ArrayList<Employee>
-}
-
-class Database {
 '    - SearchManager searchManager
     - ArrayList<Employee> employees
 }
@@ -136,10 +133,8 @@ Command <|-- DeleteCommand
 Command <|-- SearchCommand
 Command <|-- ModifyCommand
 
-Command *- DatabaseInterface
+Command *- Database
 Command *-- Option
-
-DatabaseInterface <|- Database
 
 Command <|-- AddCommand
 
