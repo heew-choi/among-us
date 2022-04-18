@@ -84,27 +84,42 @@ public class CommandParser {
     }
 
     private CompareOption getCompareOption(String option, List<String> params) {
-        if (option.equals("-f") && Objects.equals(params.get(0), "name")) {
-            return new FirstNameCompareOption(params.get(1));
+        if (Objects.equals(params.get(0), "employeeNum"))
+            return new EmployeeNumberCompareOption(params.get(1));
+
+        if (Objects.equals(params.get(0), "name")) {
+            if (option.equals("-f"))
+                return new FirstNameCompareOption(params.get(1));
+            if (option.equals("-l"))
+                return new FirstNameCompareOption(params.get(1));
+            return new NameCompareOption(params.get(1));
         }
-        else if (option.equals("-l") && Objects.equals(params.get(0), "name")) {
-            return new LastNameCompareOption(params.get(1));
+
+        if (Objects.equals(params.get(0), "cl"))
+            return new CareerLevelCompareOption(params.get(1));
+
+        if (Objects.equals(params.get(0), "phoneNum")) {
+            if (option.equals("-m"))
+                return new MiddlePhoneNumberCompareOption(params.get(1));
+            if (option.equals("-l"))
+                return new LastPhoneNumberCompareOption(params.get(1));
+            return new PhoneNumberCompareOption(params.get(1));
         }
-        else if (option.equals("-m") && Objects.equals(params.get(0), "phoneNum")) {
-            return new MiddlePhoneNumberCompareOption(params.get(1));
+
+        if (Objects.equals(params.get(0), "birthday")) {
+
+            if (option.equals("-y"))
+                return new BirthdayYearCompareOption(params.get(1));
+            if (option.equals("-m"))
+                return new BirthdayMonthCompareOption(params.get(1));
+            if (option.equals("-d"))
+                return new BirthdayDayCompareOption(params.get(1));
+            return new BirthdayCompareOption(params.get(1));
         }
-        else if (option.equals("-l") && Objects.equals(params.get(0), "phoneNum")) {
-            return new LastPhoneNumberCompareOption(params.get(1));
-        }
-        else if (option.equals("-y") && Objects.equals(params.get(0), "birthday")) {
-            return new BirthdayYearCompareOption(params.get(1));
-        }
-        else if (option.equals("-m") && Objects.equals(params.get(0), "birthday")) {
-            return new BirthdayMonthCompareOption(params.get(1));
-        }
-        else if (option.equals("-d") && Objects.equals(params.get(0), "birthday")) {
-            return new BirthdayDayCompareOption(params.get(1));
-        }
+
+        if (Objects.equals(params.get(0), "certi"))
+            return new CertificationCompareOption(params.get(1));
+
         return new DefaultCompareOption();
     }
 
