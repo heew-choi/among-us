@@ -14,16 +14,20 @@ public class AddCommand extends Command {
 
     @Override
     public void run() throws ImproperlyConfigured {
-        // 1. 사원 정보 생성
-        Employee newbie = makeNubie(params);
+        try {
+            // 1. 사원 정보 생성
+            Employee newbie = makeNubie(params);
 
-        // 2. 중복 여부 확인
-        if (database.select(newbie).size() > 0)
-            return;
+            // 2. 중복 여부 확인
+            if (database.select(option.compareOption).size() > 0)
+                return;
 
-        // 3. 사원 정보 등록
-        ArrayList<Employee> resultList = database.insert(newbie);
-        testResult = resultList;
+            // 3. 사원 정보 등록
+            database.insert(newbie);
+        }
+        catch (Exception e) {
+            throw e;
+        }
     }
 
     public Employee makeNubie(List<String> params) throws ImproperlyConfigured {
