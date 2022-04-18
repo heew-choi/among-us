@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ModifyCommand extends Command {
     public ModifyCommand(Database database) {
-        super(database);
+        super(database, 4);
     }
 
     @Override
@@ -19,7 +19,9 @@ public class ModifyCommand extends Command {
     @Override
     public void run() throws ImproperlyConfigured {
         try {
-            // 1. 사원 정보 검색
+            if (!isParamCountValid())
+                return;
+
             ArrayList<Employee> targetEmpList = database.select(option.compareOption);
             if (targetEmpList.size() == 0) {
                 print(targetEmpList);
@@ -27,7 +29,6 @@ public class ModifyCommand extends Command {
             }
             print(targetEmpList);
 
-            // 2. 수정 요청
             String updateCol = params.get(2);
             String updateVal = params.get(3);
             for (Employee targetEmp : targetEmpList) {

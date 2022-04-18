@@ -12,6 +12,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SearchCommandTest {
@@ -40,6 +42,7 @@ class SearchCommandTest {
 
             Option option = new Option(new CountPrintOption(), new EmployeeNumberCompareOption("15123099"));
             tester.setOption(option);
+            tester.setParams(Arrays.asList("employeeNum", "15123099"));
 
             tester.run();
             assertEquals(1, tester.testResult.size());
@@ -53,6 +56,7 @@ class SearchCommandTest {
 
             Option option = new Option(new CountPrintOption(), new EmployeeNumberCompareOption("18051268"));
             tester.setOption(option);
+            tester.setParams(Arrays.asList("employeeNum", "18051268"));
 
             tester.run();
             assertEquals(0, tester.testResult.size());

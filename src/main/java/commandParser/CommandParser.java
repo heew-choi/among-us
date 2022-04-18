@@ -111,7 +111,6 @@ public class CommandParser {
         }
 
         if (Objects.equals(params.get(0), "birthday")) {
-
             if (option.equals("-y"))
                 return new BirthdayYearCompareOption(params.get(1));
             if (option.equals("-m"))

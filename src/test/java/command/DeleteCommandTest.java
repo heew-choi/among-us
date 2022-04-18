@@ -9,6 +9,8 @@ import option.compareOption.EmployeeNumberCompareOption;
 import option.printOption.CountPrintOption;
 import org.junit.jupiter.api.*;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DeleteCommandTest {
@@ -37,6 +39,7 @@ class DeleteCommandTest {
 
             Option option = new Option(new CountPrintOption(), new EmployeeNumberCompareOption("15123099"));
             tester.setOption(option);
+            tester.setParams(Arrays.asList("employeeNum", "15123099"));
 
             int initCount = tester.getDatabase().select().size();
             tester.run();
@@ -51,6 +54,7 @@ class DeleteCommandTest {
 
             Option option = new Option(new CountPrintOption(), new EmployeeNumberCompareOption("18051268"));
             tester.setOption(option);
+            tester.setParams(Arrays.asList("employeeNum", "18051268"));
 
             int initCount = tester.getDatabase().select().size();
             tester.run();

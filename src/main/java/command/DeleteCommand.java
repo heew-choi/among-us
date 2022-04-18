@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class DeleteCommand extends Command {
     public DeleteCommand(Database database) {
-        super(database);
+        super(database, 2);
     }
 
     @Override
@@ -18,14 +18,15 @@ public class DeleteCommand extends Command {
     @Override
     public void run() {
         try {
-            // 1. 사원 정보 검색
+            if (!isParamCountValid())
+                return;
+
             ArrayList<Employee> targetEmpList = database.select(option.compareOption);
             if (targetEmpList.size() == 0) {
                 print(targetEmpList);
                 return;
             }
 
-            // 2. 삭제 요청
             for (Employee targetEmp : targetEmpList) {
                 database.delete(targetEmp);
             }
