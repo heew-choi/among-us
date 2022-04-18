@@ -2,6 +2,7 @@ import exceptions.ImproperlyConfigured;
 import database.*;
 import option.*;
 import employee.*;
+import utility.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,8 @@ public abstract class Command {
         this.option = option;
     }
 
-    public String print(ArrayList<Employee> records) {
-        System.out.println(option.printOption.report(records));;
+    public void print(ArrayList<Employee> records) {
+        Logger.appendLog(option.printOption.report(records, getCommandType()));
     }
 
     public abstract String getCommandType();
