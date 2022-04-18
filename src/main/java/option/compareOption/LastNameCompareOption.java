@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class LastNameCompareOption extends CompareOption {
 
-    LastNameCompareOption(String query) {
+    public LastNameCompareOption(String query) {
         super(query);
     }
 

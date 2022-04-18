@@ -1,12 +1,16 @@
+import database.*;
+import option.*;
+import employee.*;
+
 import java.util.ArrayList;
 
 public abstract class Command {
     ArrayList<String> params;
-    DatabaseInterface databaseInterface;
+    Database database;
     ArrayList<Option> options;
 
     public Command() {
-        databaseInterface = new Database();
+        database = new Database();
     }
 
     public String print(ArrayList<Employee> records) {
@@ -21,8 +25,8 @@ public abstract class Command {
         this.params = params;
     }
 
-    public void setDatabaseInterface(DatabaseInterface databaseInterface) {
-        this.databaseInterface = databaseInterface;
+    public void setDatabase(Database database) {
+        this.database = database;
     }
 
     public ArrayList<Option> getOptions() {

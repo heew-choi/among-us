@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class LastPhoneNumberCompareOption extends CompareOption {
 
-    LastPhoneNumberCompareOption(String query) {
+    public LastPhoneNumberCompareOption(String query) {
         super(query);
     }
 
