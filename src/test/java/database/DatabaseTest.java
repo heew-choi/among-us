@@ -2,8 +2,6 @@ package database;
 
 import employee.*;
 import exceptions.ImproperlyConfigured;
-import option.compareOption.FirstNameCompareOption;
-import option.compareOption.LastNameCompareOption;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

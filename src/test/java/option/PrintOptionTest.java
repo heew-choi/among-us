@@ -2,8 +2,8 @@ package option;
 
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
-import option.printOption.CountPrintOption;
-import option.printOption.ListPrintOption;
+import option.print.CountPrintOption;
+import option.print.ListPrintOption;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;

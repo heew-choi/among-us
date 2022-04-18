@@ -2,14 +2,11 @@ package option;
 
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
-import option.compareOption.*;
-import option.printOption.ListPrintOption;
+import option.compare.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,8 +1,8 @@
 import option.Option;
-import option.compareOption.*;
-import option.printOption.CountPrintOption;
-import option.printOption.IPrintOption;
-import option.printOption.ListPrintOption;
+import option.compare.*;
+import option.print.CountPrintOption;
+import option.print.IPrintOption;
+import option.print.ListPrintOption;
 import parserValidChecker.CommandTypeChecker;
 import parserValidChecker.OptionValidChecker;
 

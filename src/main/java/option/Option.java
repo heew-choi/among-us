@@ -1,7 +1,7 @@
 package option;
 
-import option.printOption.IPrintOption;
-import option.compareOption.CompareOption;
+import option.print.IPrintOption;
+import option.compare.CompareOption;
 
 public class Option {
     public IPrintOption printOption;
