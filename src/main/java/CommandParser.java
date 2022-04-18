@@ -30,7 +30,7 @@ public class CommandParser {
             List<String> params = tokens.subList(optionCheckerList.size() + 1, tokens.size());
             checkArgsValidation(commandType, options, params);
 
-            Command command = getCommand(commandType);
+            Command command = CommandFactory.getCommand(commandType);
             command.setParams(new ArrayList<String>(params));
             // To Do : Option 삽입 로직 추가
 
@@ -65,22 +65,6 @@ public class CommandParser {
             throw e;
         }
         return true;
-    }
-
-
-    public Command getCommand(String commandType) {
-        switch (commandType) {
-            case "ADD":
-                return new AddCommand();
-            case "DEL":
-                return new DeleteCommand();
-            case "SCH":
-                return new SearchCommand();
-            case "MOD":
-                return new ModifyCommand();
-            default:
-                return null;
-        }
     }
 
 }
