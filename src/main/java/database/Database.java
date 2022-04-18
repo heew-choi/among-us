@@ -20,7 +20,9 @@ public class Database {
     }
 
     public ArrayList<Employee> select(CompareOption option) {
-        return option.filter(employees);
+        return employees.stream()
+                .filter(employee -> option.compare(employee))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     public void delete(int index) {

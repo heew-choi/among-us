@@ -13,9 +13,7 @@ public class LastNameCompareOption extends CompareOption {
     }
 
     @Override
-    public ArrayList<Employee> filter(ArrayList<Employee> employees) {
-        return employees.stream()
-                .filter(employee -> employee.getName().getLastName().equals(query))
-                .collect(Collectors.toCollection(ArrayList::new));
+    public boolean compare(Employee employee) {
+        return employee.getName().getLastName().equals(query);
     }
 }

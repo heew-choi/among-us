@@ -12,7 +12,7 @@ public class DefaultCompareOption extends CompareOption {
     }
 
     @Override
-    public ArrayList<Employee> filter(ArrayList<Employee> employees) {
-        return employees;
+    public boolean compare(Employee employee) {
+        return true;
     }
 }

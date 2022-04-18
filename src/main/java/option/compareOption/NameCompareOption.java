@@ -12,9 +12,7 @@ public class NameCompareOption extends CompareOption {
     }
 
     @Override
-    public ArrayList<Employee> filter(ArrayList<Employee> employees) {
-        return employees.stream()
-                .filter(employee -> employee.getName().toString().equals(query))
-                .collect(Collectors.toCollection(ArrayList::new));
+    public boolean compare(Employee employee) {
+        return employee.getName().toString().equals(query);
     }
 }
