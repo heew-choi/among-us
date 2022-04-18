@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class ListPrintOption implements IPrintOption {
 
     @Override
-    public String report(ArrayList<Employee> employees) {
+    public String report(ArrayList<Employee> employees, String commandName) {
         if (employees.size() == 0)
             return "NONE";
 
@@ -17,7 +17,8 @@ public class ListPrintOption implements IPrintOption {
 
             try {
 //                result += employees.toString();;
-                result.append(employees.toString());
+//                result.append(employee.toString());
+                result.append(commandName + ',' + employee.toString() + '\n');
             } catch (NullPointerException e) {
                 ;
                 // 예외 처리 정책 수립 필요

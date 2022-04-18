@@ -29,29 +29,41 @@ public class PrintOptionTest {
 
     @Test
     void 카운트_프린트_옵션_기본_테스트() {
+        String commandName = "SCH";
         CountPrintOption countPrintOption = new CountPrintOption();
-        assertEquals("6", countPrintOption.report(employees));
+        String expectedResult = "6";
+        assertEquals(expectedResult, countPrintOption.report(employees, commandName));
     }
 
     @Test
     void 리스트_프린트_옵션_기본_테스트() {
+        String commandName = "SCH";
         ListPrintOption listPrintOption = new ListPrintOption();
-        assertEquals("", listPrintOption.report(employees));
+        String expectedResult = "SCH,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\n" +
+                "SCH,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO\n" +
+                "SCH,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV\n" +
+                "SCH,88114052,NQ LVARW,CL4,010-4528-3059,19500101,PRO\n" +
+                "SCH,19129568,SRERLALH HMEF,CL2,010-3091-9521,19640910,PRO\n";
+        assertEquals(expectedResult, listPrintOption.report(employees, commandName));
     }
 
     @Test
     void 카운트_프린트_옵션_제로_테스트() {
         ArrayList<Employee> zeroEmployees = new ArrayList<>();
 
+        String commandName = "SCH";
         CountPrintOption countPrintOption = new CountPrintOption();
-        assertEquals("NONE", countPrintOption.report(zeroEmployees));
+        String expectedResult = "NONE";
+        assertEquals(expectedResult, countPrintOption.report(zeroEmployees, commandName));
     }
 
     @Test
     void 리스트_프린트_옵션_제로_테스트() {
         ArrayList<Employee> zeroEmployees = new ArrayList<>();
 
+        String commandName = "SCH";
         ListPrintOption listPrintOption = new ListPrintOption();
-        assertEquals("NONE", listPrintOption.report(zeroEmployees));
+        String expectedResult = "NONE";
+        assertEquals(expectedResult, listPrintOption.report(zeroEmployees, commandName));
     }
 }
