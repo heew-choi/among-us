@@ -23,6 +23,7 @@ public class ModifyCommand extends Command {
                 print(targetEmpList);
                 return;
             }
+            print(targetEmpList);
 
             // 2. 수정 요청
             String updateCol = params.get(2);
@@ -30,7 +31,6 @@ public class ModifyCommand extends Command {
             for (Employee targetEmp : targetEmpList) {
                 database.update(targetEmp, getUpdatedEmployee(targetEmp, updateCol, updateVal));
             }
-            print(targetEmpList);
         }
         catch (Exception e) {
             throw e;
