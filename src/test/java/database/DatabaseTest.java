@@ -2,8 +2,6 @@ package database;
 
 import employee.*;
 import exceptions.ImproperlyConfigured;
-import option.compareOption.FirstNameCompareOption;
-import option.compareOption.LastNameCompareOption;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -62,7 +60,7 @@ class DatabaseTest {
     @DisplayName("Delete 테스트")
     void deleteTest() {
         assertEquals(3, db.select().size(), "Delete 전 size");
-        db.delete(0);
+        db.delete(db.select().get(0));
         assertEquals(2, db.select().size(), "Delete 후 size");
     }
 }

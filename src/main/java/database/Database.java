@@ -25,8 +25,8 @@ public class Database {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public void delete(int index) {
-        employees.remove(index);
+    public void delete(Employee employee) {
+        employees.remove(employee);
     }
 
     public void insert(Employee employee) {
