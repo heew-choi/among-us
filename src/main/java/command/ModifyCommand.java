@@ -3,8 +3,6 @@ package command;
 import database.Database;
 import employee.*;
 import exceptions.ImproperlyConfigured;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModifyCommand extends Command {
@@ -19,25 +17,20 @@ public class ModifyCommand extends Command {
 
     @Override
     public void run() throws ImproperlyConfigured {
-        try {
-            if (!isParamCountValid())
-                return;
+        if (!isParamCountValid())
+            return;
 
-            List<Employee> targetEmpList = database.select(option.compareOption);
-            if (targetEmpList.size() == 0) {
-                print(targetEmpList);
-                return;
-            }
+        List<Employee> targetEmpList = database.select(option.compareOption);
+        if (targetEmpList.isEmpty()) {
             print(targetEmpList);
-
-            String updateCol = params.get(2);
-            String updateVal = params.get(3);
-            for (Employee targetEmp : targetEmpList) {
-                database.update(targetEmp, getUpdatedEmployee(targetEmp, updateCol, updateVal));
-            }
+            return;
         }
-        catch (Exception e) {
-            throw e;
+        print(targetEmpList);
+
+        String updateCol = params.get(2);
+        String updateVal = params.get(3);
+        for (Employee targetEmp : targetEmpList) {
+            database.update(targetEmp, getUpdatedEmployee(targetEmp, updateCol, updateVal));
         }
     }
 

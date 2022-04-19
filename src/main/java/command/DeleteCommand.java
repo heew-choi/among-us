@@ -2,8 +2,8 @@ package command;
 
 import database.Database;
 import employee.Employee;
+import exceptions.ImproperlyConfigured;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DeleteCommand extends Command {
@@ -17,24 +17,19 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void run() {
-        try {
-            if (!isParamCountValid())
-                return;
+    public void run() throws ImproperlyConfigured {
+        if (!isParamCountValid())
+            return;
 
-            List<Employee> targetEmpList = database.select(option.compareOption);
-            if (targetEmpList.size() == 0) {
-                print(targetEmpList);
-                return;
-            }
-
-            for (Employee targetEmp : targetEmpList) {
-                database.delete(targetEmp);
-            }
+        List<Employee> targetEmpList = database.select(option.compareOption);
+        if (targetEmpList.isEmpty()) {
             print(targetEmpList);
+            return;
         }
-        catch (Exception e) {
-            throw e;
+
+        for (Employee targetEmp : targetEmpList) {
+            database.delete(targetEmp);
         }
+        print(targetEmpList);
     }
 }

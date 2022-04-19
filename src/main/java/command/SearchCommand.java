@@ -2,12 +2,12 @@ package command;
 
 import database.Database;
 import employee.Employee;
+import exceptions.ImproperlyConfigured;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchCommand extends Command {
-    public List<Employee> testResult;
+    private List<Employee> testResult;
 
     public SearchCommand(Database database) {
         super(database, 2);
@@ -19,17 +19,15 @@ public class SearchCommand extends Command {
     }
 
     @Override
-    public void run() {
+    public void run() throws ImproperlyConfigured {
         if (!isParamCountValid())
             return;
 
-        try {
-//            print(database.select(option.compareOption));
-            testResult = database.select(option.compareOption);
-            print(testResult);
-        }
-        catch (Exception e) {
-            throw e;
-        }
+        testResult = database.select(option.compareOption);
+        print(testResult);
+    }
+
+    public List<Employee> getTestResult() {
+        return testResult;
     }
 }
