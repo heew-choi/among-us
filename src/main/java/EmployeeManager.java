@@ -23,8 +23,7 @@ public class EmployeeManager {
         commandParser = new CommandParser(",", commandList, optionCheckerList, commandFactory);
     }
 
-    public void runCommand(String line) throws ImproperlyConfigured {
-        Command command = commandParser.parseCommand(line);
-        command.run();
+    public void runCommand(String line) {
+        commandParser.parseCommand(line).run();
     }
 }

@@ -1,11 +1,9 @@
 package employee;
 
-import exceptions.ImproperlyConfigured;
-
 public class CertificationLevel extends EmployeeField {
     private String certi;
 
-    public CertificationLevel(String certi) throws ImproperlyConfigured {
+    public CertificationLevel(String certi) {
         super(certi);
         this.certi = certi;
     }

@@ -3,6 +3,8 @@ package command;
 import database.Database;
 import employee.*;
 import exceptions.ImproperlyConfigured;
+import exceptions.InvalidCommandException;
+
 import java.util.List;
 
 public class ModifyCommand extends Command {
@@ -16,7 +18,7 @@ public class ModifyCommand extends Command {
     }
 
     @Override
-    public void run() throws ImproperlyConfigured {
+    public void run() {
         if (!isParamCountValid())
             return;
 
@@ -34,8 +36,8 @@ public class ModifyCommand extends Command {
         }
     }
 
-    private Employee getUpdatedEmployee(Employee originEmployee, String column, String updateValue) throws ImproperlyConfigured {
-        Employee updatedEmp = originEmployee;
+    private Employee getUpdatedEmployee(Employee originEmployee, String column, String updateValue) {
+        Employee updatedEmp = new Employee(originEmployee);
 
         switch (column) {
             case "employeeNum":
@@ -57,7 +59,7 @@ public class ModifyCommand extends Command {
                 updatedEmp.setCerti(new CertificationLevel(updateValue));
                 break;
             default:
-                throw new ArithmeticException("Invlaid column name (" + column + ")");
+                throw new InvalidCommandException("Invalid column name (" + column + ")");
         }
         return updatedEmp;
     }

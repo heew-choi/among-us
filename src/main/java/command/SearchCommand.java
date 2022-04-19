@@ -19,7 +19,7 @@ public class SearchCommand extends Command {
     }
 
     @Override
-    public void run() throws ImproperlyConfigured {
+    public void run() {
         if (!isParamCountValid())
             return;
 

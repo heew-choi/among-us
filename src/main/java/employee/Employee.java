@@ -1,9 +1,6 @@
 package employee;
 
-import exceptions.ImproperlyConfigured;
-
 public class Employee {
-    private int id;
     private EmployeeNumber employeeNum;
     private Name name;
     private CareerLevel cl;
@@ -14,13 +11,22 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String strEmployeeNum, String strName, String cl, String strPhoneNumber, String strBirthday, String certi) throws ImproperlyConfigured {
+    public Employee(String strEmployeeNum, String strName, String cl, String strPhoneNumber, String strBirthday, String certi) {
         this.employeeNum = new EmployeeNumber(strEmployeeNum);
         this.name = new Name(strName);
         this.cl = new CareerLevel(cl);
         this.phoneNum = new PhoneNumber(strPhoneNumber);
         this.birthday = new BirthDay(strBirthday);
         this.certi = new CertificationLevel(certi);
+    }
+
+    public Employee(Employee employee) {
+        employeeNum = new EmployeeNumber(employee.getEmployeeNum().toString());
+        name = new Name(employee.getName().toString());
+        cl = new CareerLevel(employee.getCl().toString());
+        phoneNum = new PhoneNumber(employee.getPhoneNum().toString());
+        birthday = new BirthDay(employee.getBirthday().toString());
+        certi = new CertificationLevel(employee.getCerti().toString());
     }
 
     public boolean isValid() {
@@ -46,14 +52,6 @@ public class Employee {
 
     public String getFullEmployeeNumber() {
         return employeeNum.getFullNumber();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public EmployeeNumber getEmployeeNum() {

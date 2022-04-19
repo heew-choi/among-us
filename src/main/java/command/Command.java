@@ -2,6 +2,7 @@ package command;
 
 import exceptions.ImproperlyConfigured;
 import database.*;
+import exceptions.InvalidCommandException;
 import option.*;
 import employee.*;
 import utility.Logger;
@@ -24,7 +25,7 @@ public abstract class Command {
 
     protected boolean isParamCountValid() {
         if (params.size() != paramCount)
-            throw new ArithmeticException("Parameter count mismatch");
+            throw new InvalidCommandException("Parameter count mismatch");
         return true;
     }
 

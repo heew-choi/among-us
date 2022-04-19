@@ -16,7 +16,7 @@ public class PrintOptionTest {
     ArrayList<Employee> employees;
 
     @BeforeEach
-    void setUp() throws ImproperlyConfigured {
+    void setUp() {
         // Employee List 준비
         employees = new ArrayList<>();
         employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
