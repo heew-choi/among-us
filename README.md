@@ -10,3 +10,12 @@
 6. 일은 근무시간에만 하기
 7. 아침에 인사하기
 8. 점심 잘 챙겨먹기
+
+## Wiki
+[Home](https://github.com/heew-choi/among-us/wiki/Among-Us#among-us)
+
+[Branch Rule](https://github.com/heew-choi/among-us/wiki/Branch-Rules#naming-rules)
+
+[Development Environment](https://github.com/heew-choi/among-us/wiki/Development-Environment#meeting-settings)
+
+[Review Rule](https://github.com/heew-choi/among-us/wiki/Review-Rules#pr-pull-request-%EC%A0%95%EC%B1%85)
