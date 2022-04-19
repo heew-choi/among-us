@@ -5,6 +5,7 @@ import employee.*;
 import exceptions.ImproperlyConfigured;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ModifyCommand extends Command {
     public ModifyCommand(Database database) {
@@ -22,7 +23,7 @@ public class ModifyCommand extends Command {
             if (!isParamCountValid())
                 return;
 
-            ArrayList<Employee> targetEmpList = database.select(option.compareOption);
+            List<Employee> targetEmpList = database.select(option.compareOption);
             if (targetEmpList.size() == 0) {
                 print(targetEmpList);
                 return;

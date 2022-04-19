@@ -20,7 +20,7 @@ public abstract class Command {
         this.PARAM_CNT = paramCount;
     }
 
-    protected void print(ArrayList<Employee> records) {
+    protected void print(List<Employee> records) {
         Logger.appendLog(option.printOption.report(records, getCommandType()));
     }
 

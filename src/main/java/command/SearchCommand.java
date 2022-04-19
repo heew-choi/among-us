@@ -4,9 +4,10 @@ import database.Database;
 import employee.Employee;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchCommand extends Command {
-    public ArrayList<Employee> testResult;
+    public List<Employee> testResult;
 
     public SearchCommand(Database database) {
         super(database, 2);

@@ -4,6 +4,7 @@ import database.Database;
 import employee.Employee;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DeleteCommand extends Command {
     public DeleteCommand(Database database) {
@@ -21,7 +22,7 @@ public class DeleteCommand extends Command {
             if (!isParamCountValid())
                 return;
 
-            ArrayList<Employee> targetEmpList = database.select(option.compareOption);
+            List<Employee> targetEmpList = database.select(option.compareOption);
             if (targetEmpList.size() == 0) {
                 print(targetEmpList);
                 return;
