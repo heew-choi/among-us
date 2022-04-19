@@ -18,23 +18,18 @@ public class AddCommand extends Command {
 
     @Override
     public void run() throws ImproperlyConfigured {
-        try {
-            if (!isParamCountValid() || isDuplicatedEmployee())
-                return;
+        if (!isParamCountValid() || isDuplicatedEmployee())
+            return;
 
-            Employee newbie = makeNubie(params);
-            database.insert(newbie);
-        }
-        catch (Exception e) {
-            throw e;
-        }
+        Employee newbie = makeNewbie(params);
+        database.insert(newbie);
     }
 
     private boolean isDuplicatedEmployee() {
-        return database.select(option.compareOption).size() > 0;
+        return !database.select(option.compareOption).isEmpty();
     }
 
-    public Employee makeNubie(List<String> params) throws ImproperlyConfigured {
+    public Employee makeNewbie(List<String> params) throws ImproperlyConfigured {
         String empNum = params.get(0);
         String name = params.get(1);
         String cl = params.get(2);

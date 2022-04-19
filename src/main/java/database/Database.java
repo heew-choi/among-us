@@ -6,22 +6,23 @@ import option.compare.CompareOption;
 import option.compare.EmployeeNumberCompareOption;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Database {
-    private ArrayList<Employee> employees;
+    private List<Employee> employees;
 
     public Database() {
         this.employees = new ArrayList<>();
     }
 
-    public ArrayList<Employee> select() {
+    public List<Employee> select() {
         return employees;
     }
 
-    public ArrayList<Employee> select(CompareOption option) {
+    public List<Employee> select(CompareOption option) {
         return employees.stream()
-                .filter(employee -> option.compare(employee))
+                .filter(option::compare)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -45,7 +46,7 @@ public class Database {
     }
 
     private boolean isDuplicateEmployeeNumber(EmployeeNumber employeeNumber) {
-        return select(new EmployeeNumberCompareOption(employeeNumber.toString())).size() > 0;
+        return !select(new EmployeeNumberCompareOption(employeeNumber.toString())).isEmpty();
     }
 
     private int getInsertPosition(Employee employee) {
