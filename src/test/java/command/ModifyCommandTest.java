@@ -39,23 +39,23 @@ class ModifyCommandTest {
 
             Option option = new Option(new CountPrintOption(), new EmployeeNumberCompareOption("15123099"));
             tester.setOption(option);
-            tester.setParams(Arrays.asList("emplyeeNum", "15123099", "name", "MOJI LEE"));
+            tester.setParams(Arrays.asList("employeeNum", "15123099", "name", "MOJI LEE"));
             tester.run();
             assertEquals(1, tester.getDatabase().select(new NameCompareOption("MOJI LEE")).size());
 
-            tester.setParams(Arrays.asList("emplyeeNum", "15123099", "cl", "CL2"));
+            tester.setParams(Arrays.asList("employeeNum", "15123099", "cl", "CL2"));
             tester.run();
             assertEquals(1, tester.getDatabase().select(new CareerLevelCompareOption("CL2")).size());
 
-            tester.setParams(Arrays.asList("emplyeeNum", "15123099", "phoneNum", "010-5193-1060"));
+            tester.setParams(Arrays.asList("employeeNum", "15123099", "phoneNum", "010-5193-1060"));
             tester.run();
             assertEquals(1, tester.getDatabase().select(new PhoneNumberCompareOption("010-5193-1060")).size());
 
-            tester.setParams(Arrays.asList("emplyeeNum", "15123099", "birthday", "19921130"));
+            tester.setParams(Arrays.asList("employeeNum", "15123099", "birthday", "19921130"));
             tester.run();
             assertEquals(1, tester.getDatabase().select(new BirthdayCompareOption("19921130")).size());
 
-            tester.setParams(Arrays.asList("emplyeeNum", "15123099", "certi", "EX"));
+            tester.setParams(Arrays.asList("employeeNum", "15123099", "certi", "EX"));
             tester.run();
             assertEquals(1, tester.getDatabase().select(new CertificationCompareOption("EX")).size());
         }
@@ -68,7 +68,7 @@ class ModifyCommandTest {
 
             Option option = new Option(new CountPrintOption(), new EmployeeNumberCompareOption("18051268"));
             tester.setOption(option);
-            tester.setParams(Arrays.asList("emplyeeNum", "15123099", "name", "MOJI LEE"));
+            tester.setParams(Arrays.asList("employeeNum", "15123099", "name", "MOJI LEE"));
             tester.run();
 
             assertEquals(0, tester.getDatabase().select(new NameCompareOption("MOJI LEE")).size());
