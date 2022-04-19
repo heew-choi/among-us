@@ -77,10 +77,10 @@ public class CommandParser {
     }
 
     private Option getCommandOption(List<String> options, List<String> params) {
-        return new Option(getPritnOption(options.get(0)), getCompareOption(options.get(1), params));
+        return new Option(getPrintOption(options.get(0)), getCompareOption(options.get(1), params));
     }
 
-    private IPrintOption getPritnOption(String printOption) {
+    private IPrintOption getPrintOption(String printOption) {
         if (printOption.equals("-p")) {
             return new ListPrintOption();
         }
