@@ -17,6 +17,7 @@ public class Logger {
     }
 
     public static void setOutputFilePath(String outputFilePath) {
+        file = null;
         Logger.outputFilePath = outputFilePath;
     }
 
