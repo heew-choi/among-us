@@ -3,6 +3,8 @@ package command;
 import database.Database;
 import employee.*;
 import exceptions.ImproperlyConfigured;
+import exceptions.InvalidCommandException;
+
 import java.util.List;
 
 public class ModifyCommand extends Command {
@@ -57,7 +59,7 @@ public class ModifyCommand extends Command {
                 updatedEmp.setCerti(new CertificationLevel(updateValue));
                 break;
             default:
-                throw new ArithmeticException("Invlaid column name (" + column + ")");
+                throw new InvalidCommandException("Invalid column name (" + column + ")");
         }
         return updatedEmp;
     }
