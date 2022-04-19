@@ -72,7 +72,9 @@ public class Logger {
             file = new File(outputFilePath);
             if (!file.exists()) {
                 try {
-                    file.createNewFile();
+                    if (!file.createNewFile()) {
+                        throw new IOException();
+                    }
                 }catch (IOException ex) {
                     logConsole("Output file create failed!");
                     return false;
