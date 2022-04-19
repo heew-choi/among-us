@@ -8,7 +8,7 @@ public class CountPrintOption implements IPrintOption {
 
     @Override
     public String report(ArrayList<Employee> employees, String commandName) {
-        if (employees.size() == 0)
+        if (employees.isEmpty())
             return commandName + ",NONE";
 
         return commandName + "," + employees.size();
