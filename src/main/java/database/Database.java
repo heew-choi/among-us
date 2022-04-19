@@ -36,7 +36,7 @@ public class Database {
     }
 
     public void update(Employee targetEmployee, Employee changedEmployee) {
-        if (targetEmployee.isValid()) {
+        if (changedEmployee.isValid()) {
             targetEmployee.setName(changedEmployee.getName());
             targetEmployee.setCl(changedEmployee.getCl());
             targetEmployee.setPhoneNum(changedEmployee.getPhoneNum());
