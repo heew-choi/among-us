@@ -1,42 +1,66 @@
 package database;
 
 import employee.Employee;
-import employee.EmployeeNumber;
 import option.compare.CompareOption;
-import option.compare.EmployeeNumberCompareOption;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Database {
-    private List<Employee> employees;
+    private final List<Employee> employees;
+    private final Set<String> usedEmpNumbers = new HashSet<>();
+    private boolean sorted = false;
 
     public Database() {
         this.employees = new ArrayList<>();
     }
 
     public List<Employee> select() {
+        sortDatabase();
+        
         return employees;
     }
 
     public List<Employee> select(CompareOption option) {
+        sortDatabase();
         return employees.stream()
                 .filter(option::compare)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public List<Employee> select(CompareOption option, int limit) {
+        sortDatabase();
+
+        ArrayList<Employee> result = new ArrayList<>();
+
+        for(Employee employee : employees) {
+            if (option.compare(employee)) {
+                result.add(employee);
+                limit --;
+            }
+
+            if (limit == 0)
+                break;
+        }
+
+        return result;
+    }
+
     public void delete(Employee employee) {
         employees.remove(employee);
+        usedEmpNumbers.remove(employee.getEmployeeNum().toString());
     }
 
     public void insert(Employee employee) {
-        if (isDuplicateEmployeeNumber(employee.getEmployeeNum())) return;
-        employees.add(getInsertPosition(employee), employee);
+        if (isDuplicateEmployeeNumber(employee.getEmployeeNum().toString())) return;
+
+        usedEmpNumbers.add(employee.getEmployeeNum().toString());
+        employees.add(employee);
+        sorted = false;
     }
 
     public void update(Employee targetEmployee, Employee changedEmployee) {
-        if (targetEmployee.isValid()) {
+        if (changedEmployee.isValid()) {
             targetEmployee.setName(changedEmployee.getName());
             targetEmployee.setCl(changedEmployee.getCl());
             targetEmployee.setPhoneNum(changedEmployee.getPhoneNum());
@@ -45,28 +69,15 @@ public class Database {
         }
     }
 
-    private boolean isDuplicateEmployeeNumber(EmployeeNumber employeeNumber) {
-        return !select(new EmployeeNumberCompareOption(employeeNumber.toString())).isEmpty();
-    }
-
-    private int getInsertPosition(Employee employee) {
-        int min = 0;
-        int max = employees.size() - 1;
-
-        if (employees.isEmpty()) return 0;
-
-        while(min <= max) {
-            int mid = (min + max) / 2;
-
-            if (employees.get(mid).getFullEmployeeNumber().compareTo(employee.getFullEmployeeNumber()) == 0) {
-                return mid;
-            } else if (employees.get(mid).getFullEmployeeNumber().compareTo(employee.getFullEmployeeNumber()) > 0) {
-                max = mid - 1;
-            } else {
-                min = mid + 1;
-            }
+    private void sortDatabase() {
+        if (!sorted) {
+            employees.sort(Comparator.comparing(Employee::getFullEmployeeNumber));
+            sorted = true;
         }
-
-        return min;
     }
+
+    private boolean isDuplicateEmployeeNumber(String employeeNumber) {
+        return usedEmpNumbers.contains(employeeNumber);
+    }
+
 }
