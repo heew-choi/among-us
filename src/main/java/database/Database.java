@@ -4,7 +4,6 @@ import employee.Employee;
 import employee.EmployeeNumber;
 import option.compareOption.CompareOption;
 import option.compareOption.EmployeeNumberCompareOption;
-import option.compareOption.LastNameCompareOption;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

@@ -1,6 +1,5 @@
-package parserValidChecker;
+package commandParser.commandValidChecker;
 
-import java.rmi.AlreadyBoundException;
 import java.util.List;
 
 public class CommandTypeChecker {

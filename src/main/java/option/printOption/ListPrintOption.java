@@ -18,7 +18,7 @@ public class ListPrintOption implements IPrintOption {
         StringBuffer result = new StringBuffer();
         for (Employee employee : employees.stream().limit(PRINT_LIMIT).collect(Collectors.toList())) {
             if (!isFirstLine) {
-                result.append('\n');
+                result.append("\r\n");
             }
             isFirstLine = false;
             result.append(commandName + ',' + employee.toString());

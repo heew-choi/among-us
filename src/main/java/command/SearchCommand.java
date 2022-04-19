@@ -1,3 +1,5 @@
+package command;
+
 import database.Database;
 import employee.Employee;
 
@@ -7,7 +9,7 @@ public class SearchCommand extends Command {
     public ArrayList<Employee> testResult;
 
     public SearchCommand(Database database) {
-        super(database);
+        super(database, 2);
     }
 
     @Override
@@ -17,10 +19,11 @@ public class SearchCommand extends Command {
 
     @Override
     public void run() {
+        if (!isParamCountValid())
+            return;
+
         try {
 //            print(database.select(option.compareOption));
-
-            // For unit test
             testResult = database.select(option.compareOption);
             print(testResult);
         }

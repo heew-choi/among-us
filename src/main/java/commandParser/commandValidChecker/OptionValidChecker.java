@@ -1,4 +1,4 @@
-package parserValidChecker;
+package commandParser.commandValidChecker;
 
 import java.util.List;
 

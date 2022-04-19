@@ -1,8 +1,13 @@
+package commandParser;
+
+import command.Command;
+import command.CommandFactory;
+import commandParser.CommandParser;
 import database.Database;
-import parserValidChecker.Option3Checker;
-import parserValidChecker.OptionValidChecker;
-import parserValidChecker.PrintOptionChecker;
-import parserValidChecker.CompareOptionChecker;
+import commandParser.commandValidChecker.Option3Checker;
+import commandParser.commandValidChecker.OptionValidChecker;
+import commandParser.commandValidChecker.PrintOptionChecker;
+import commandParser.commandValidChecker.CompareOptionChecker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -29,7 +34,7 @@ class CommandParserTest {
     }
 
     @Nested
-    @DisplayName("ADD Command")
+    @DisplayName("ADD command.Command")
     class ADDTest {
 
         @Test
@@ -40,13 +45,13 @@ class CommandParserTest {
 
             Command command = tester.parseCommand(inputStr);
             assertEquals("ADD", command.getCommandType());
-            assertArrayEquals(expParams.toArray(), command.params.toArray());
+            assertArrayEquals(expParams.toArray(), command.getParams().toArray());
         }
 
     }
 
     @Nested
-    @DisplayName("ADD Command")
+    @DisplayName("ADD command.Command")
     class DELTest {
 
         @Test
@@ -57,13 +62,13 @@ class CommandParserTest {
 
             Command command = tester.parseCommand(inputStr);
             assertEquals("DEL", command.getCommandType());
-            assertArrayEquals(expParams.toArray(), command.params.toArray());
+            assertArrayEquals(expParams.toArray(), command.getParams().toArray());
         }
 
     }
 
     @Nested
-    @DisplayName("SCH Command")
+    @DisplayName("SCH command.Command")
     class SCHTest {
 
         @Test
@@ -74,13 +79,13 @@ class CommandParserTest {
 
             Command command = tester.parseCommand(inputStr);
             assertEquals("SCH", command.getCommandType());
-            assertArrayEquals(expParams.toArray(), command.params.toArray());
+            assertArrayEquals(expParams.toArray(), command.getParams().toArray());
         }
 
     }
 
     @Nested
-    @DisplayName("MOD Command")
+    @DisplayName("MOD command.Command")
     class MODTest {
 
         @Test
@@ -91,7 +96,7 @@ class CommandParserTest {
 
             Command command = tester.parseCommand(inputStr);
             assertEquals("MOD", command.getCommandType());
-            assertArrayEquals(expParams.toArray(), command.params.toArray());
+            assertArrayEquals(expParams.toArray(), command.getParams().toArray());
         }
 
     }

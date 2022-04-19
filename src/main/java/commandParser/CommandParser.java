@@ -1,8 +1,11 @@
-import database.Database;
+package commandParser;
+
+import command.Command;
+import command.CommandFactory;
+import commandParser.commandValidChecker.*;
 import option.Option;
 import option.compareOption.*;
 import option.printOption.*;
-import parserValidChecker.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -107,7 +110,6 @@ public class CommandParser {
         }
 
         if (Objects.equals(params.get(0), "birthday")) {
-
             if (option.equals("-y"))
                 return new BirthdayYearCompareOption(params.get(1));
             if (option.equals("-m"))

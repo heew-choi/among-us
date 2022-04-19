@@ -1,15 +1,14 @@
+package command;
+
 import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddCommand extends Command {
-    public ArrayList<Employee> testResult;
-
     public AddCommand(Database database) {
-        super(database);
+        super(database, 6);
     }
 
     @Override
@@ -20,19 +19,19 @@ public class AddCommand extends Command {
     @Override
     public void run() throws ImproperlyConfigured {
         try {
-            // 1. 사원 정보 생성
-            Employee newbie = makeNubie(params);
-
-            // 2. 중복 여부 확인
-            if (database.select(option.compareOption).size() > 0)
+            if (!isParamCountValid() || isDuplicatedEmployee())
                 return;
 
-            // 3. 사원 정보 등록
+            Employee newbie = makeNubie(params);
             database.insert(newbie);
         }
         catch (Exception e) {
             throw e;
         }
+    }
+
+    private boolean isDuplicatedEmployee() {
+        return database.select(option.compareOption).size() > 0;
     }
 
     public Employee makeNubie(List<String> params) throws ImproperlyConfigured {
