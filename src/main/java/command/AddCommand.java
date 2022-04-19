@@ -24,7 +24,7 @@ public class AddCommand extends Command {
         database.insert(newbie);
     }
 
-    public Employee makeNewbie(List<String> params) {
+    private Employee makeNewbie(List<String> params) {
         return new Employee(params.get(0), params.get(1), params.get(2), params.get(3), params.get(4), params.get(5));
     }
 }
