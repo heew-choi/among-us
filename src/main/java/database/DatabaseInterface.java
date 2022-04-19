@@ -1,7 +1,7 @@
 package database;
 
 import employee.Employee;
-import option.compareOption.CompareOption;
+import option.compare.CompareOption;
 
 import java.util.ArrayList;
 
