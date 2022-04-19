@@ -2,8 +2,6 @@ package command;
 
 import database.Database;
 import employee.Employee;
-import exceptions.ImproperlyConfigured;
-import option.compare.EmployeeNumberCompareOption;
 
 import java.util.List;
 
@@ -26,13 +24,7 @@ public class AddCommand extends Command {
         database.insert(newbie);
     }
 
-    public Employee makeNewbie(List<String> params) {
-        String empNum = params.get(0);
-        String name = params.get(1);
-        String cl = params.get(2);
-        String phoneNum = params.get(3);
-        String birthday = params.get(4);
-        String certi = params.get(5);
-        return new Employee(empNum, name, cl, phoneNum, birthday, certi);
+    private Employee makeNewbie(List<String> params) {
+        return new Employee(params.get(0), params.get(1), params.get(2), params.get(3), params.get(4), params.get(5));
     }
 }
