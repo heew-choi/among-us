@@ -18,7 +18,7 @@ public class EmployeeManager {
         optionCheckerList.add(new Option3Checker());
         CommandFactory commandFactory = new CommandFactory(new Database());
 
-        commandParser = new CommandParser(",", commandList, optionCheckerList, commandFactory);
+        commandParser = new CommandParser(",", commandList, optionCheckerList, commandFactory, 5);
     }
 
     public void runCommand(String line) {

@@ -12,4 +12,9 @@ public class CountPrintOption implements IPrintOption {
 
         return commandName + "," + employees.size();
     }
+
+    @Override
+    public int getPrintLimit() {
+        return 0;
+    }
 }
