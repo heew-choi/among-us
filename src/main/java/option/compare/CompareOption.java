@@ -1,14 +1,14 @@
-package option.compareOption;
+package option.compare;
 
 import employee.Employee;
 
 public abstract class CompareOption {
     protected String query;
 
-    public CompareOption() {
+    protected CompareOption() {
     }
 
-    public CompareOption(String query) {
+    protected CompareOption(String query) {
         this.query = query;
     }
 

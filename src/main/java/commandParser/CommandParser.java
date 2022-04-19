@@ -4,8 +4,8 @@ import command.Command;
 import command.CommandFactory;
 import commandParser.commandValidChecker.*;
 import option.Option;
-import option.compareOption.*;
-import option.printOption.*;
+import option.compare.*;
+import option.print.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;

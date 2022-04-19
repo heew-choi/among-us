@@ -1,12 +1,11 @@
 package command;
 
-import command.DeleteCommand;
 import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
 import option.Option;
-import option.compareOption.EmployeeNumberCompareOption;
-import option.printOption.CountPrintOption;
+import option.compare.EmployeeNumberCompareOption;
+import option.print.CountPrintOption;
 import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
