@@ -19,7 +19,7 @@ public abstract class Command {
     }
 
     protected void print(List<Employee> records) {
-        Logger.appendLog(option.printOption.report(records, getCommandType()));
+        Logger.appendLog(option.getPrintOption().report(records, getCommandType()));
     }
 
     protected boolean isParamCountValid() {
