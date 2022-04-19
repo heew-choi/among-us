@@ -9,7 +9,6 @@ import option.compare.*;
 import option.print.*;
 import utility.Logger;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +19,7 @@ public class CommandParser {
     private final String delimiter;
     private final CommandTypeChecker commandTypeChecker;
     private final List<OptionValidChecker> optionCheckerList;
-    private CommandFactory commandFactory;
+    private final CommandFactory commandFactory;
 
     public CommandParser(String delimiter, List<String> commandList, List<OptionValidChecker> optionCheckerList, CommandFactory commandFactory) {
         this.delimiter = delimiter;
@@ -71,13 +70,13 @@ public class CommandParser {
 
     private Command getCommand(String commandType, List<String> options, List<String> params) {
         Command command = commandFactory.getCommand(commandType);
-        command.setParams(new ArrayList<>(params));
+        command.setParams(params);
         command.setOption(getCommandOption(options, params));
         return command;
     }
 
     private Option getCommandOption(List<String> options, List<String> params) {
-        return new Option(getPrintOption(options.get(0)), getCompareOption(options.get(1), params));
+        return new Option(getPrintOption(options.get(0)), getCompareOption(options.get(1), params.get(0), params.get(1)));
     }
 
     private IPrintOption getPrintOption(String printOption) {
@@ -87,41 +86,41 @@ public class CommandParser {
         return new CountPrintOption();
     }
 
-    private CompareOption getCompareOption(String option, List<String> params) {
-        if (Objects.equals(params.get(0), "employeeNum"))
-            return new EmployeeNumberCompareOption(params.get(1));
+    private CompareOption getCompareOption(String option, String column, String query) {
+        if (Objects.equals(column, "employeeNum"))
+            return new EmployeeNumberCompareOption(query);
 
-        if (Objects.equals(params.get(0), "name")) {
+        if (Objects.equals(column, "name")) {
             if (option.equals("-f"))
-                return new FirstNameCompareOption(params.get(1));
+                return new FirstNameCompareOption(query);
             if (option.equals("-l"))
-                return new LastNameCompareOption(params.get(1));
-            return new NameCompareOption(params.get(1));
+                return new LastNameCompareOption(query);
+            return new NameCompareOption(query);
         }
 
-        if (Objects.equals(params.get(0), "cl"))
-            return new CareerLevelCompareOption(params.get(1));
+        if (Objects.equals(column, "cl"))
+            return new CareerLevelCompareOption(query);
 
-        if (Objects.equals(params.get(0), "phoneNum")) {
+        if (Objects.equals(column, "phoneNum")) {
             if (option.equals("-m"))
-                return new MiddlePhoneNumberCompareOption(params.get(1));
+                return new MiddlePhoneNumberCompareOption(query);
             if (option.equals("-l"))
-                return new LastPhoneNumberCompareOption(params.get(1));
-            return new PhoneNumberCompareOption(params.get(1));
+                return new LastPhoneNumberCompareOption(query);
+            return new PhoneNumberCompareOption(query);
         }
 
-        if (Objects.equals(params.get(0), "birthday")) {
+        if (Objects.equals(column, "birthday")) {
             if (option.equals("-y"))
-                return new BirthdayYearCompareOption(params.get(1));
+                return new BirthdayYearCompareOption(query);
             if (option.equals("-m"))
-                return new BirthdayMonthCompareOption(params.get(1));
+                return new BirthdayMonthCompareOption(query);
             if (option.equals("-d"))
-                return new BirthdayDayCompareOption(params.get(1));
-            return new BirthdayCompareOption(params.get(1));
+                return new BirthdayDayCompareOption(query);
+            return new BirthdayCompareOption(query);
         }
 
-        if (Objects.equals(params.get(0), "certi"))
-            return new CertificationCompareOption(params.get(1));
+        if (Objects.equals(column, "certi"))
+            return new CertificationCompareOption(query);
 
         return new DefaultCompareOption();
     }
