@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class ListPrintOption implements IPrintOption {
 
     static final int PRINT_LIMIT = 5;
+    static final String NEW_LINE = "\r\n";
 
     @Override
     public String report(List<Employee> employees, String commandName) {
@@ -20,6 +21,6 @@ public class ListPrintOption implements IPrintOption {
             results.add(commandName + ',' + employee.toString());
         }
 
-        return String.join("\r\n", results);
+        return String.join(NEW_LINE, results);
     }
 }
