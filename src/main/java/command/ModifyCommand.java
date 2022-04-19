@@ -37,7 +37,6 @@ public class ModifyCommand extends Command {
     private Employee getUpdatedEmployee(Employee originEmployee, String column, String updateValue) throws ImproperlyConfigured {
         Employee updatedEmp = originEmployee;
 
-
         switch (column) {
             case "employeeNum":
                 updatedEmp.setEmployeeNum(new EmployeeNumber(updateValue));

@@ -1,27 +1,22 @@
 package commandParser.commandValidChecker;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class CompareOptionChecker extends OptionValidChecker {
+    private final Map<String, List<String>> columnOptionMap;
+
+    public CompareOptionChecker() {
+        this.columnOptionMap = new HashMap<>();
+        this.columnOptionMap.put("name", Arrays.asList("-f", "-l"));
+        this.columnOptionMap.put("phoneNum", Arrays.asList("-m", "-l"));
+        this.columnOptionMap.put("birthday", Arrays.asList("-y", "-m", "-d"));
+    }
+
     @Override
     public boolean isValid(String option, List<String> params) {
-        if (option.trim().isEmpty()) {
+        if (option.trim().isEmpty())
             return true;
-        }
-        else if (option.equals("-f")) {
-            return Objects.equals(params.get(0), "name");
-        }
-        else if (option.equals("-l")) {
-            return Objects.equals(params.get(0), "name") || Objects.equals(params.get(0), "phoneNum");
-        }
-        else if (option.equals("-m")) {
-            return Objects.equals(params.get(0), "phoneNum") || Objects.equals(params.get(0), "birthday");
-        }
-        else if (option.equals("-y") || option.equals("-d")) {
-            return Objects.equals(params.get(0), "birthday");
-        }
-        return false;
+        return columnOptionMap.containsKey(params.get(0)) && columnOptionMap.get(params.get(0)).contains(option);
     }
 
     @Override
