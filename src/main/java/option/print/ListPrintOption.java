@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 public class ListPrintOption implements IPrintOption {
     private final int printLimit;
 
-    public ListPrintOption(int listPrintLimit) {
-        this.printLimit = listPrintLimit;
+    public ListPrintOption(int printLimit) {
+        this.printLimit = printLimit;
     }
 
     @Override
