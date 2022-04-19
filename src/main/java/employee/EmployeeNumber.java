@@ -1,12 +1,10 @@
 package employee;
 
-import exceptions.ImproperlyConfigured;
-
 public class EmployeeNumber extends EmployeeField {
     private String fullNumber;
     private String shortNumber;
 
-    public EmployeeNumber(String shortNumber) throws ImproperlyConfigured {
+    public EmployeeNumber(String shortNumber) {
         super(shortNumber);
         this.shortNumber = shortNumber;
         setFullNumber();

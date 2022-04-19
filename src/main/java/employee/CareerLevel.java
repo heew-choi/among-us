@@ -1,7 +1,5 @@
 package employee;
 
-import exceptions.ImproperlyConfigured;
-
 public class CareerLevel extends EmployeeField {
     private String cl;
 

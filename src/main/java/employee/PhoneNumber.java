@@ -1,7 +1,5 @@
 package employee;
 
-import exceptions.ImproperlyConfigured;
-
 public class PhoneNumber extends EmployeeField {
     private String middleNumber;
     private String lastNumber;

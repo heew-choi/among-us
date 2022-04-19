@@ -1,7 +1,5 @@
 package employee;
 
-import exceptions.ImproperlyConfigured;
-
 public class BirthDay extends EmployeeField {
     private String year;
     private String month;

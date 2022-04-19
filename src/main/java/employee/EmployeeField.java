@@ -3,7 +3,7 @@ package employee;
 import exceptions.ImproperlyConfigured;
 
 public abstract class EmployeeField {
-    protected EmployeeField(String str) throws ImproperlyConfigured {
+    protected EmployeeField(String str) {
         if (!isValidString(str))
             throw new ImproperlyConfigured();
     }
@@ -17,6 +17,6 @@ public abstract class EmployeeField {
     }
 
     public boolean isValidString(String inputString) {
-        return false;
+        return inputString.isEmpty();
     }
 }

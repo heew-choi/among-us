@@ -1,7 +1,5 @@
 package employee;
 
-import exceptions.ImproperlyConfigured;
-
 public class CertificationLevel extends EmployeeField {
     private String certi;
 

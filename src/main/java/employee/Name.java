@@ -1,7 +1,5 @@
 package employee;
 
-import exceptions.ImproperlyConfigured;
-
 public class Name extends EmployeeField {
     private String firstName;
     private String lastName;
