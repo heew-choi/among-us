@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class ListPrintOption implements IPrintOption {
 
-    final int PRINT_LIMIT = 5;
+    static final int PRINT_LIMIT = 5;
 
     @Override
     public String report(ArrayList<Employee> employees, String commandName) {
