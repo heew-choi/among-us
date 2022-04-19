@@ -3,6 +3,7 @@ package command;
 import database.Database;
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
+import option.compare.EmployeeNumberCompareOption;
 
 import java.util.List;
 
@@ -18,15 +19,11 @@ public class AddCommand extends Command {
 
     @Override
     public void run() throws ImproperlyConfigured {
-        if (!isParamCountValid() || isDuplicatedEmployee())
+        if (!isParamCountValid())
             return;
 
         Employee newbie = makeNewbie(params);
         database.insert(newbie);
-    }
-
-    private boolean isDuplicatedEmployee() {
-        return !database.select(option.getCompareOption()).isEmpty();
     }
 
     public Employee makeNewbie(List<String> params) throws ImproperlyConfigured {
