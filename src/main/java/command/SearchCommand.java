@@ -2,7 +2,6 @@ package command;
 
 import database.Database;
 import employee.Employee;
-import exceptions.ImproperlyConfigured;
 
 import java.util.List;
 

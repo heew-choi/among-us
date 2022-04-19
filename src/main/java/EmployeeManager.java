@@ -1,8 +1,6 @@
-import command.Command;
 import command.CommandFactory;
 import commandParser.CommandParser;
 import database.Database;
-import exceptions.ImproperlyConfigured;
 import commandParser.commandValidChecker.*;
 
 import java.util.ArrayList;

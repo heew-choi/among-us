@@ -2,8 +2,6 @@ package command;
 
 import database.Database;
 import employee.Employee;
-import exceptions.ImproperlyConfigured;
-import option.compare.EmployeeNumberCompareOption;
 
 import java.util.List;
 
