@@ -27,6 +27,7 @@ class DatabaseTest {
         assertEquals(4, db.select().size(), "Insert 후 size");
         db.insert(new Employee("07050411", "TEST KING", "CL4", "010-9874-3216", "19801010", "EX"));
         assertEquals("20020202", db.select().get(4).getEmployeeNum().toString(), "데이터의 마지막 사원 정보");
+        assertEquals("87651234", db.select().get(0).getEmployeeNum().toString(), "데이터의 첫번째 사원 정보");
         for ( Employee employee : db.select()) {
             System.out.println(employee.getFullEmployeeNumber() + ":" + employee.getName());
         }
