@@ -15,7 +15,7 @@ class EmployeeNumberTest {
     class ValidationCheckTest {
         @Test
         @DisplayName("Success case")
-        void success() throws ImproperlyConfigured {
+        void success() {
             assertTrue(new EmployeeNumber("18020989").isValid());
         }
         @Test

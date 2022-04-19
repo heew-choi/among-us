@@ -47,7 +47,7 @@ class AddCommandTest {
                 "88114052/NQ LVARW/CL4/010-4528-3059/19911021/PRO",
                 "19129568/SRERLALH HMEF/CL2/010-3091-9521/19640910/PRO"
         })
-        void run_normal(String paramStr) throws ImproperlyConfigured {
+        void run_normal(String paramStr) {
             List<String> params = Arrays.asList(paramStr.split("/"));
             tester.setParams(params);
 
@@ -62,7 +62,7 @@ class AddCommandTest {
                 "15123099/VXIHXOTH JHOP/CL3/010-3112-2609/19771211/ADV",
                 "17112609/FB NTAWR/CL4/010-5645-6122/19861203/PRO"
         })
-        void run_normal_duplicated(String paramStr) throws ImproperlyConfigured {
+        void run_normal_duplicated(String paramStr) {
             tester.getDatabase().insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
             tester.getDatabase().insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
 

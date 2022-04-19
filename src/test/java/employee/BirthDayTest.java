@@ -9,7 +9,7 @@ class BirthDayTest {
     static BirthDay b;
 
     @BeforeAll
-    static void setup() throws ImproperlyConfigured {
+    static void setup() {
         b = new BirthDay("19921014");
     }
 
@@ -31,13 +31,13 @@ class BirthDayTest {
     class ValidationCheckTest {
         @Test
         @DisplayName("Success case")
-        void success() throws ImproperlyConfigured {
+        void success() {
             assertTrue(new BirthDay("19921014").isValid());
         }
 
         @Test
         @DisplayName("Fail case")
-        void fail() throws ImproperlyConfigured {
+        void fail() {
             assertFalse(new BirthDay("19923101").isValid());
             assertFalse(new BirthDay("19921200").isValid());
 

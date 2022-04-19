@@ -18,7 +18,7 @@ public class ModifyCommand extends Command {
     }
 
     @Override
-    public void run() throws ImproperlyConfigured {
+    public void run() {
         if (!isParamCountValid())
             return;
 
@@ -36,7 +36,7 @@ public class ModifyCommand extends Command {
         }
     }
 
-    private Employee getUpdatedEmployee(Employee originEmployee, String column, String updateValue) throws ImproperlyConfigured {
+    private Employee getUpdatedEmployee(Employee originEmployee, String column, String updateValue) {
         Employee updatedEmp = originEmployee;
 
         switch (column) {

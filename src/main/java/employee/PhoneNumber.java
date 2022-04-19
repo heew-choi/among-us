@@ -6,7 +6,7 @@ public class PhoneNumber extends EmployeeField {
     private String middleNumber;
     private String lastNumber;
 
-    public PhoneNumber(String strPhoneNumber) throws ImproperlyConfigured {
+    public PhoneNumber(String strPhoneNumber) {
         super(strPhoneNumber);
 
         String[] splitPhoneNumber = strPhoneNumber.split("-");

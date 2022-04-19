@@ -14,7 +14,7 @@ class CertificationLevelTest {
     class ValidationCheckTest {
         @Test
         @DisplayName("Success case")
-        void success() throws ImproperlyConfigured {
+        void success() {
             assertTrue(new CertificationLevel("ADV").isValid());
             assertTrue(new CertificationLevel("PRO").isValid());
             assertTrue(new CertificationLevel("EX").isValid());

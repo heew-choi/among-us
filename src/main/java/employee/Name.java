@@ -6,7 +6,7 @@ public class Name extends EmployeeField {
     private String firstName;
     private String lastName;
 
-    public Name(String strName) throws ImproperlyConfigured {
+    public Name(String strName) {
         super(strName);
         String[] splitName = strName.split(" ");
         firstName = splitName[0];

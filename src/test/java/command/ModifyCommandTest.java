@@ -32,7 +32,7 @@ class ModifyCommandTest {
 
         @Test
         @DisplayName("정상 Case : 수정")
-        void run_normal() throws ImproperlyConfigured {
+        void run_normal() {
             tester.getDatabase().insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
             tester.getDatabase().insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
 
@@ -61,7 +61,7 @@ class ModifyCommandTest {
 
         @Test
         @DisplayName("정상 Case : 수정 대상 없음")
-        void run_normal_duplicated() throws ImproperlyConfigured {
+        void run_normal_duplicated() {
             tester.getDatabase().insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
             tester.getDatabase().insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
 

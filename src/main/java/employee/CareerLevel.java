@@ -5,7 +5,7 @@ import exceptions.ImproperlyConfigured;
 public class CareerLevel extends EmployeeField {
     private String cl;
 
-    public CareerLevel(String cl) throws ImproperlyConfigured {
+    public CareerLevel(String cl) {
         super(cl);
         this.cl = cl;
     }
