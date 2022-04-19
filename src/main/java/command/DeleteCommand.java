@@ -2,7 +2,6 @@ package command;
 
 import database.Database;
 import employee.Employee;
-import exceptions.ImproperlyConfigured;
 
 import java.util.List;
 
@@ -22,14 +21,13 @@ public class DeleteCommand extends Command {
             return;
 
         List<Employee> targetEmpList = database.select(option.getCompareOption());
-        if (targetEmpList.isEmpty()) {
-            print(targetEmpList);
+        print(targetEmpList);
+
+        if (targetEmpList.isEmpty())
             return;
-        }
 
         for (Employee targetEmp : targetEmpList) {
             database.delete(targetEmp);
         }
-        print(targetEmpList);
     }
 }

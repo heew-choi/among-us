@@ -23,8 +23,8 @@ public class ModifyCommand extends Command {
             return;
 
         List<Employee> targetEmpList = database.select(option.getCompareOption());
-
         print(targetEmpList);
+
         if (targetEmpList.isEmpty())
             return;
 
