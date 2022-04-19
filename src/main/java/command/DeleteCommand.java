@@ -22,7 +22,7 @@ public class DeleteCommand extends Command {
                 return;
 
             ArrayList<Employee> targetEmpList = database.select(option.compareOption);
-            if (targetEmpList.size() == 0) {
+            if (targetEmpList.isEmpty()) {
                 print(targetEmpList);
                 return;
             }

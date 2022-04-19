@@ -6,7 +6,7 @@ import employee.Employee;
 import java.util.ArrayList;
 
 public class SearchCommand extends Command {
-    public ArrayList<Employee> testResult;
+    private ArrayList<Employee> testResult;
 
     public SearchCommand(Database database) {
         super(database, 2);
@@ -23,12 +23,15 @@ public class SearchCommand extends Command {
             return;
 
         try {
-//            print(database.select(option.compareOption));
             testResult = database.select(option.compareOption);
             print(testResult);
         }
         catch (Exception e) {
             throw e;
         }
+    }
+
+    public ArrayList<Employee> getTestResult() {
+        return testResult;
     }
 }

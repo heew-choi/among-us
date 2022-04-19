@@ -23,7 +23,7 @@ public class ModifyCommand extends Command {
                 return;
 
             ArrayList<Employee> targetEmpList = database.select(option.compareOption);
-            if (targetEmpList.size() == 0) {
+            if (targetEmpList.isEmpty()) {
                 print(targetEmpList);
                 return;
             }
@@ -42,7 +42,6 @@ public class ModifyCommand extends Command {
 
     private Employee getUpdatedEmployee(Employee originEmployee, String column, String updateValue) throws ImproperlyConfigured {
         Employee updatedEmp = originEmployee;
-
 
         switch (column) {
             case "employeeNum":

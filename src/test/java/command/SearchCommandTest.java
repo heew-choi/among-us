@@ -45,7 +45,7 @@ class SearchCommandTest {
             tester.setParams(Arrays.asList("employeeNum", "15123099"));
 
             tester.run();
-            assertEquals(1, tester.testResult.size());
+            assertEquals(1, tester.getTestResult().size());
         }
 
         @Test
@@ -59,7 +59,7 @@ class SearchCommandTest {
             tester.setParams(Arrays.asList("employeeNum", "18051268"));
 
             tester.run();
-            assertEquals(0, tester.testResult.size());
+            assertEquals(0, tester.getTestResult().size());
         }
 
     }

@@ -39,7 +39,7 @@ public class CommandParser {
             checkArgsValidation(commandType, options, params);
 
             Command command = commandFactory.getCommand(commandType);
-            command.setParams(new ArrayList<String>(params));
+            command.setParams(new ArrayList<>(params));
             command.setOption(getCommandOption(options, params));
 
             return command;
@@ -50,12 +50,7 @@ public class CommandParser {
     }
 
     public  boolean isValidCommandLine(String line) {
-        if (line == null ||
-                line.length() == 0 ||
-                line.split(delimiter).length < MIN_SPLIT_CNT) {
-            return false;
-        }
-        return true;
+        return !(line == null || line.length() == 0 || line.split(delimiter).length < MIN_SPLIT_CNT);
     }
 
     public boolean checkArgsValidation(String commandType, List<String> options, List<String> params) {
@@ -76,10 +71,10 @@ public class CommandParser {
     }
 
     private Option getCommandOption(List<String> options, List<String> params) {
-        return new Option(getPritnOption(options.get(0), params), getCompareOption(options.get(1), params));
+        return new Option(getPritnOption(options.get(0)), getCompareOption(options.get(1), params));
     }
 
-    private IPrintOption getPritnOption(String printOption, List<String> params) {
+    private IPrintOption getPritnOption(String printOption) {
         if (printOption.equals("-p")) {
             return new ListPrintOption();
         }

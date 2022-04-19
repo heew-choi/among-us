@@ -3,7 +3,7 @@ package commandParser.commandValidChecker;
 import java.util.List;
 
 public class CommandTypeChecker {
-    private List<String> commandList;
+    private final List<String> commandList;
 
     public CommandTypeChecker(List<String> commandList) {
         this.commandList = commandList;

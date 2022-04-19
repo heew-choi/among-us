@@ -31,7 +31,7 @@ public class AddCommand extends Command {
     }
 
     private boolean isDuplicatedEmployee() {
-        return database.select(option.compareOption).size() > 0;
+        return !database.select(option.compareOption).isEmpty();
     }
 
     public Employee makeNubie(List<String> params) throws ImproperlyConfigured {
