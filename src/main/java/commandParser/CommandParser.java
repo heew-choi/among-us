@@ -20,12 +20,14 @@ public class CommandParser {
     private final CommandTypeChecker commandTypeChecker;
     private final List<OptionValidChecker> optionCheckerList;
     private final CommandFactory commandFactory;
+    private final int printLimit;
 
-    public CommandParser(String delimiter, List<String> commandList, List<OptionValidChecker> optionCheckerList, CommandFactory commandFactory) {
+    public CommandParser(String delimiter, List<String> commandList, List<OptionValidChecker> optionCheckerList, CommandFactory commandFactory, int printLimit) {
         this.delimiter = delimiter;
         this.commandTypeChecker = new CommandTypeChecker(commandList);
         this.optionCheckerList = optionCheckerList;
         this.commandFactory = commandFactory;
+        this.printLimit = printLimit;
     }
 
     public Command parseCommand(String line) {
@@ -81,7 +83,7 @@ public class CommandParser {
 
     private IPrintOption getPrintOption(String printOption) {
         if (printOption.equals("-p")) {
-            return new ListPrintOption();
+            return new ListPrintOption(printLimit);
         }
         return new CountPrintOption();
     }

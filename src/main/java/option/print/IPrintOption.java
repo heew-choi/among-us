@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IPrintOption {
     String report(List<Employee> employees, String commandName);
+    int getPrintLimit();
 }

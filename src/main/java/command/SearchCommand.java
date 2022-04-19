@@ -23,7 +23,7 @@ public class SearchCommand extends Command {
         if (!isParamCountValid())
             return;
         if (option.getPrintOption() instanceof ListPrintOption) {
-            testResult = database.select(option.getCompareOption(), 5);
+            testResult = database.select(option.getCompareOption(), option.getPrintOption().getPrintLimit());
         }else {
             testResult = database.select(option.getCompareOption());
         }

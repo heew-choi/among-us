@@ -38,7 +38,7 @@ public class PrintOptionTest {
     @Test
     void 리스트_프린트_옵션_기본_테스트() {
         String commandName = "SCH";
-        ListPrintOption listPrintOption = new ListPrintOption();
+        ListPrintOption listPrintOption = new ListPrintOption(5);
         String expectedResult = "SCH,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\r\n" +
                 "SCH,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO\r\n" +
                 "SCH,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV\r\n" +
@@ -62,7 +62,7 @@ public class PrintOptionTest {
         ArrayList<Employee> zeroEmployees = new ArrayList<>();
 
         String commandName = "SCH";
-        ListPrintOption listPrintOption = new ListPrintOption();
+        ListPrintOption listPrintOption = new ListPrintOption(5);
         String expectedResult = "SCH,NONE";
         assertEquals(expectedResult, listPrintOption.report(zeroEmployees, commandName));
     }

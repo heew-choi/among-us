@@ -29,7 +29,7 @@ class CommandParserTest {
         optionCheckerList.add(new Option3Checker());
         CommandFactory commandFactory = new CommandFactory(new Database());
 
-        tester = new CommandParser(",", commandList, optionCheckerList, commandFactory);
+        tester = new CommandParser(",", commandList, optionCheckerList, commandFactory, 5);
     }
 
     @Nested
