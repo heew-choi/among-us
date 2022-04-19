@@ -1,4 +1,4 @@
-package option.compareOption;
+package option.compare;
 
 import employee.Employee;
 

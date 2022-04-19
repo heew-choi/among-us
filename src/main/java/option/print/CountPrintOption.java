@@ -1,4 +1,4 @@
-package option.printOption;
+package option.print;
 
 import employee.Employee;
 
