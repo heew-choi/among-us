@@ -21,7 +21,7 @@ public class DeleteCommand extends Command {
         if (!isParamCountValid())
             return;
 
-        List<Employee> targetEmpList = database.select(option.compareOption);
+        List<Employee> targetEmpList = database.select(option.getCompareOption());
         if (targetEmpList.isEmpty()) {
             print(targetEmpList);
             return;
