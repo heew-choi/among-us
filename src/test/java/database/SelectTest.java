@@ -2,13 +2,13 @@ package database;
 
 import employee.Employee;
 import exceptions.ImproperlyConfigured;
-import option.compareOption.*;
+import option.compare.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SelectTest {
+class SelectTest {
     Database db;
     Employee testEmployee;
 
