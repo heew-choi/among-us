@@ -16,6 +16,8 @@ public class Database {
     }
 
     public List<Employee> select() {
+        sortDatabase();
+        
         return employees;
     }
 
