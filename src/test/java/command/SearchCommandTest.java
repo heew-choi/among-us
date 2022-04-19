@@ -35,7 +35,7 @@ class SearchCommandTest {
 
         @Test
         @DisplayName("정상 Case : 검색 성공")
-        void run_normal() throws ImproperlyConfigured {
+        void run_normal() {
             tester.getDatabase().insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
             tester.getDatabase().insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
 
@@ -49,7 +49,7 @@ class SearchCommandTest {
 
         @Test
         @DisplayName("정상 Case : 검색 실패")
-        void run_normal_not_fount() throws ImproperlyConfigured {
+        void run_normal_not_fount() {
             tester.getDatabase().insert(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
             tester.getDatabase().insert(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
 

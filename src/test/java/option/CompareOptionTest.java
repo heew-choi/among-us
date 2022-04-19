@@ -15,47 +15,47 @@ public class CompareOptionTest {
     Employee employee;
 
     @BeforeEach
-    void setUp() throws ImproperlyConfigured {
+    void setUp() {
         employee = new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
     }
 
     @Test
-    void 기본_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 기본_비교_옵션_테스트() {
         assertEquals(false, new DefaultCompareOption().compare(employee));
     }
 
     @Test
-    void 사원번호_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 사원번호_비교_옵션_테스트() {
         assertEquals(true, new EmployeeNumberCompareOption("15123099").compare(employee));
         assertEquals(false, new EmployeeNumberCompareOption("15123098").compare(employee));
     }
 
     @Test
-    void 성명_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 성명_비교_옵션_테스트() {
         assertEquals(true, new NameCompareOption("VXIHXOTH JHOP").compare(employee));
         assertEquals(false, new NameCompareOption("VXIHXOTH").compare(employee));
     }
 
     @Test
-    void 성명_이름_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 성명_이름_비교_옵션_테스트() {
         assertEquals(false, new FirstNameCompareOption("VXIHXOTH JHOP").compare(employee));
         assertEquals(true, new FirstNameCompareOption("VXIHXOTH").compare(employee));
     }
 
     @Test
-    void 성명_성_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 성명_성_비교_옵션_테스트() {
         assertEquals(false, new LastNameCompareOption("VXIHXOTH JHOP").compare(employee));
         assertEquals(true, new LastNameCompareOption("JHOP").compare(employee));
     }
 
     @Test
-    void 경력개발단계_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 경력개발단계_비교_옵션_테스트() {
         assertEquals(true, new CareerLevelCompareOption("CL3").compare(employee));
         assertEquals(false, new CareerLevelCompareOption("CL4").compare(employee));
     }
 
     @Test
-    void 전화번호_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 전화번호_비교_옵션_테스트() {
         assertEquals(true, new PhoneNumberCompareOption("010-3112-2609").compare(employee));
         assertEquals(false, new PhoneNumberCompareOption("010-3112-2600").compare(employee));
         assertEquals(false, new PhoneNumberCompareOption("3112").compare(employee));
@@ -63,7 +63,7 @@ public class CompareOptionTest {
     }
 
     @Test
-    void 전화번호_중간자리_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 전화번호_중간자리_비교_옵션_테스트() {
         assertEquals(false, new MiddlePhoneNumberCompareOption("010-3112-2609").compare(employee));
         assertEquals(false, new MiddlePhoneNumberCompareOption("010-3112-2600").compare(employee));
         assertEquals(true, new MiddlePhoneNumberCompareOption("3112").compare(employee));
@@ -71,7 +71,7 @@ public class CompareOptionTest {
     }
 
     @Test
-    void 전화번호_뒷자리_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 전화번호_뒷자리_비교_옵션_테스트() {
         assertEquals(false, new LastPhoneNumberCompareOption("010-3112-2609").compare(employee));
         assertEquals(false, new LastPhoneNumberCompareOption("010-3112-2600").compare(employee));
         assertEquals(false, new LastPhoneNumberCompareOption("3112").compare(employee));
@@ -79,7 +79,7 @@ public class CompareOptionTest {
     }
 
     @Test
-    void 생년월일_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 생년월일_비교_옵션_테스트() {
         assertEquals(true, new BirthdayCompareOption("19771211").compare(employee));
         assertEquals(false, new BirthdayCompareOption("19771210").compare(employee));
         assertEquals(false, new BirthdayCompareOption("1977").compare(employee));
@@ -90,7 +90,7 @@ public class CompareOptionTest {
     }
 
     @Test
-    void 생년월일_연도_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 생년월일_연도_비교_옵션_테스트() {
         assertEquals(false, new BirthdayYearCompareOption("19771211").compare(employee));
         assertEquals(false, new BirthdayYearCompareOption("19771210").compare(employee));
         assertEquals(true, new BirthdayYearCompareOption("1977").compare(employee));
@@ -101,7 +101,7 @@ public class CompareOptionTest {
     }
 
     @Test
-    void 생년월일_월_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 생년월일_월_비교_옵션_테스트() {
         assertEquals(false, new BirthdayMonthCompareOption("19771211").compare(employee));
         assertEquals(false, new BirthdayMonthCompareOption("19771210").compare(employee));
         assertEquals(false, new BirthdayMonthCompareOption("1977").compare(employee));
@@ -112,7 +112,7 @@ public class CompareOptionTest {
     }
 
     @Test
-    void 생년월일_일_비교_옵션_테스트() throws ImproperlyConfigured {
+    void 생년월일_일_비교_옵션_테스트() {
         assertEquals(false, new BirthdayDayCompareOption("19771211").compare(employee));
         assertEquals(false, new BirthdayDayCompareOption("19771210").compare(employee));
         assertEquals(false, new BirthdayDayCompareOption("1977").compare(employee));
@@ -123,7 +123,7 @@ public class CompareOptionTest {
     }
 
     @Test
-    void CERTI_비교_옵션_테스트() throws ImproperlyConfigured {
+    void CERTI_비교_옵션_테스트() {
         assertEquals(true, new CertificationCompareOption("ADV").compare(employee));
         assertEquals(false, new CertificationCompareOption("EX").compare(employee));
     }

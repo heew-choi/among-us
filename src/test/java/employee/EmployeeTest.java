@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmployeeTest {
     @Test
     @DisplayName("toString() Test")
-    void toStringTest() throws ImproperlyConfigured {
+    void toStringTest() {
         assertEquals("18050301,KYUMOK KIM,CL2,010-9777-6055,19980906,PRO", new Employee("18050301","KYUMOK KIM","CL2","010-9777-6055","19980906","PRO").toString());
     }
 
@@ -20,7 +20,7 @@ class EmployeeTest {
     class ValidationCheckTest {
         @Test
         @DisplayName("Success case")
-        void success() throws ImproperlyConfigured {
+        void success() {
             assertTrue(new Employee("18050301","KYUMOK KIM","CL2","010-9777-6055","19980906","PRO").isValid());
             assertTrue(new Employee("99010504","RKEFMW KIM","CL3","010-1233-5543","19660507","ADV").isValid());
         }

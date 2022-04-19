@@ -1,13 +1,11 @@
 package employee;
 
-import exceptions.ImproperlyConfigured;
-
 public class BirthDay extends EmployeeField {
     private String year;
     private String month;
     private String day;
 
-    public BirthDay(String strBirthday) throws ImproperlyConfigured {
+    public BirthDay(String strBirthday) {
         super(strBirthday);
         year = strBirthday.substring(0, 4);
         month = strBirthday.substring(4, 6);

@@ -18,7 +18,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void run() throws ImproperlyConfigured {
+    public void run() {
         if (!isParamCountValid())
             return;
 
@@ -26,7 +26,7 @@ public class AddCommand extends Command {
         database.insert(newbie);
     }
 
-    public Employee makeNewbie(List<String> params) throws ImproperlyConfigured {
+    public Employee makeNewbie(List<String> params) {
         String empNum = params.get(0);
         String name = params.get(1);
         String cl = params.get(2);

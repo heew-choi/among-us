@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class NameTest {
     @Test
-    void createObjectTest() throws ImproperlyConfigured {
+    void createObjectTest() {
         Name name = new Name("TAEHYUN KIM");
         assertEquals("TAEHYUN", name.getFirstName());
         assertEquals("KIM", name.getLastName());
@@ -21,7 +21,7 @@ class NameTest {
     class ValidationCheckTest {
         @Test
         @DisplayName("Success case")
-        void success() throws ImproperlyConfigured {
+        void success() {
             assertTrue(new Name("KYUMOK KIM").isValid());
         }
         @Test

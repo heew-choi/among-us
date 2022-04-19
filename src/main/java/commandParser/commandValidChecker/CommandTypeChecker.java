@@ -1,5 +1,7 @@
 package commandParser.commandValidChecker;
 
+import exceptions.InvalidCommandException;
+
 import java.util.List;
 
 public class CommandTypeChecker {
@@ -11,10 +13,10 @@ public class CommandTypeChecker {
 
     public void check(String commandType) {
         if (!isValid(commandType))
-            throw new ArithmeticException("Invalid command type");
+            throw new InvalidCommandException("Invalid command type");
     }
 
     public boolean isValid(String commandType) {
-        return commandType.contains(commandType);
+        return commandList.contains(commandType);
     }
 }

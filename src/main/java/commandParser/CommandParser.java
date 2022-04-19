@@ -3,9 +3,11 @@ package commandParser;
 import command.Command;
 import command.CommandFactory;
 import commandParser.commandValidChecker.*;
+import exceptions.InvalidCommandException;
 import option.Option;
 import option.compare.*;
 import option.print.*;
+import utility.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +31,7 @@ public class CommandParser {
 
     public Command parseCommand(String line) {
         if (!isValidCommandLine(line))
-            throw new ArithmeticException("Invalid command line format");
+            throw new InvalidCommandException("Invalid command line format");
 
         try {
             List<String> tokens = Arrays.asList(line.split(delimiter));
@@ -40,30 +42,31 @@ public class CommandParser {
             checkArgsValidation(commandType, options, params);
             return getCommand(commandType, options, params);
         }
-        catch (Exception e) {
+        catch (InvalidCommandException e) {
+            Logger.logConsole(e.getMessage());
             throw e;
         }
     }
 
-    private  boolean isValidCommandLine(String line) {
+    private boolean isValidCommandLine(String line) {
         return !(line == null || line.length() == 0 || line.split(delimiter).length < MIN_SPLIT_CNT);
     }
 
-    private boolean checkArgsValidation(String commandType, List<String> options, List<String> params) {
+    private void checkArgsValidation(String commandType, List<String> options, List<String> params) {
         try {
             commandTypeChecker.check(commandType);
 
             if (optionCheckerList.size() != options.size())
-                throw new ArithmeticException("Option count mismatch");
+                throw new InvalidCommandException("Option count mismatch");
 
             for (int idx = 0; idx < options.size(); idx++) {
                 optionCheckerList.get(idx).check(options.get(idx), params);
             }
         }
-        catch (Exception e) {
+        catch (InvalidCommandException e) {
+            Logger.logConsole(e.getMessage());
             throw e;
         }
-        return true;
     }
 
     private Command getCommand(String commandType, List<String> options, List<String> params) {
@@ -74,10 +77,10 @@ public class CommandParser {
     }
 
     private Option getCommandOption(List<String> options, List<String> params) {
-        return new Option(getPritnOption(options.get(0)), getCompareOption(options.get(1), params));
+        return new Option(getPrintOption(options.get(0)), getCompareOption(options.get(1), params));
     }
 
-    private IPrintOption getPritnOption(String printOption) {
+    private IPrintOption getPrintOption(String printOption) {
         if (printOption.equals("-p")) {
             return new ListPrintOption();
         }

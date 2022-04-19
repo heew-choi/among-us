@@ -15,7 +15,7 @@ class CareerLevelTest {
     class ValidationCheckTest {
         @Test
         @DisplayName("Success case")
-        void success() throws ImproperlyConfigured {
+        void success() {
             assertTrue(new CareerLevel("CL1").isValid());
             assertTrue(new CareerLevel("CL2").isValid());
             assertTrue(new CareerLevel("CL3").isValid());
