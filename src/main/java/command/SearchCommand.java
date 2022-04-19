@@ -2,6 +2,7 @@ package command;
 
 import database.Database;
 import employee.Employee;
+import option.print.ListPrintOption;
 
 import java.util.List;
 
@@ -21,8 +22,11 @@ public class SearchCommand extends Command {
     public void run() {
         if (!isParamCountValid())
             return;
-
-        testResult = database.select(option.getCompareOption());
+        if (option.getPrintOption() instanceof ListPrintOption) {
+            testResult = database.select(option.getCompareOption(), 5);
+        }else {
+            testResult = database.select(option.getCompareOption());
+        }
         print(testResult);
     }
 

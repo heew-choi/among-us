@@ -26,6 +26,22 @@ public class Database {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public List<Employee> select(CompareOption option, int limit) {
+        ArrayList<Employee> result = new ArrayList<>();
+
+        for(Employee employee : employees) {
+            if (option.compare(employee)) {
+                result.add(employee);
+                limit --;
+            }
+
+            if (limit == 0)
+                break;
+        }
+
+        return result;
+    }
+
     public void delete(Employee employee) {
         employees.remove(employee);
     }
