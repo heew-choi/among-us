@@ -2,7 +2,6 @@ package commandParser;
 
 import command.Command;
 import command.CommandFactory;
-import commandParser.CommandParser;
 import database.Database;
 import commandParser.commandValidChecker.Option3Checker;
 import commandParser.commandValidChecker.OptionValidChecker;

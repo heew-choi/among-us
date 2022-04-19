@@ -23,7 +23,7 @@ public class SearchCommand extends Command {
         if (!isParamCountValid())
             return;
 
-        testResult = database.select(option.compareOption);
+        testResult = database.select(option.getCompareOption());
         print(testResult);
     }
 

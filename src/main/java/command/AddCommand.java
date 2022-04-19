@@ -26,7 +26,7 @@ public class AddCommand extends Command {
     }
 
     private boolean isDuplicatedEmployee() {
-        return !database.select(option.compareOption).isEmpty();
+        return !database.select(option.getCompareOption()).isEmpty();
     }
 
     public Employee makeNewbie(List<String> params) throws ImproperlyConfigured {
