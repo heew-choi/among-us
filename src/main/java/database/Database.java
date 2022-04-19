@@ -46,6 +46,7 @@ public class Database {
 
     public void delete(Employee employee) {
         employees.remove(employee);
+        usedEmpNumbers.remove(employee.getEmployeeNum().toString());
     }
 
     public void insert(Employee employee) {
