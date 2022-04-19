@@ -15,7 +15,7 @@ public abstract class Command {
     protected Option option;
     protected List<String> params;
 
-    public Command(Database database, int paramCount) {
+    protected Command(Database database, int paramCount) {
         this.database = database;
         this.PARAM_CNT = paramCount;
     }
