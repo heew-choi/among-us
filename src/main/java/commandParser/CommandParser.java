@@ -36,24 +36,20 @@ public class CommandParser {
             String commandType = tokens.get(0);
             List<String> options = tokens.subList(1, optionCheckerList.size() + 1);
             List<String> params = tokens.subList(optionCheckerList.size() + 1, tokens.size());
+
             checkArgsValidation(commandType, options, params);
-
-            Command command = commandFactory.getCommand(commandType);
-            command.setParams(new ArrayList<>(params));
-            command.setOption(getCommandOption(options, params));
-
-            return command;
+            return getCommand(commandType, options, params);
         }
         catch (Exception e) {
             throw e;
         }
     }
 
-    public  boolean isValidCommandLine(String line) {
+    private  boolean isValidCommandLine(String line) {
         return !(line == null || line.length() == 0 || line.split(delimiter).length < MIN_SPLIT_CNT);
     }
 
-    public boolean checkArgsValidation(String commandType, List<String> options, List<String> params) {
+    private boolean checkArgsValidation(String commandType, List<String> options, List<String> params) {
         try {
             commandTypeChecker.check(commandType);
 
@@ -68,6 +64,13 @@ public class CommandParser {
             throw e;
         }
         return true;
+    }
+
+    private Command getCommand(String commandType, List<String> options, List<String> params) {
+        Command command = commandFactory.getCommand(commandType);
+        command.setParams(new ArrayList<>(params));
+        command.setOption(getCommandOption(options, params));
+        return command;
     }
 
     private Option getCommandOption(List<String> options, List<String> params) {
