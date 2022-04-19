@@ -37,7 +37,7 @@ public class ModifyCommand extends Command {
     }
 
     private Employee getUpdatedEmployee(Employee originEmployee, String column, String updateValue) {
-        Employee updatedEmp = originEmployee;
+        Employee updatedEmp = new Employee(originEmployee);
 
         switch (column) {
             case "employeeNum":
