@@ -1,0 +1,79 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+
+left to right direction
+
+' PlantUML Parser 자동 생성
+class option.compare.FirstNameCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.EmployeeNumberCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.NameCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.LastNameCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.DefaultCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.CareerLevelCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.BirthdayYearCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.BirthdayCompareOption {
++ boolean compare(Employee)
+}
+abstract class option.compare.CompareOption {
+# String query
++ {abstract}boolean compare(Employee)
+}
+class option.compare.CertificationCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.BirthdayMonthCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.PhoneNumberCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.LastPhoneNumberCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.MiddlePhoneNumberCompareOption {
++ boolean compare(Employee)
+}
+class option.compare.BirthdayDayCompareOption {
++ boolean compare(Employee)
+}
+option.compare.CompareOption <|-- option.compare.EmployeeNumberCompareOption
+option.compare.CompareOption <|-- option.compare.NameCompareOption
+option.compare.CompareOption <|-- option.compare.DefaultCompareOption
+option.compare.CompareOption <|-- option.compare.CertificationCompareOption
+option.compare.CompareOption <|-- option.compare.FirstNameCompareOption
+option.compare.CompareOption <|-- option.compare.LastNameCompareOption
+option.compare.CompareOption <|-- option.compare.CareerLevelCompareOption
+option.compare.CompareOption <|-- option.compare.BirthdayYearCompareOption
+option.compare.CompareOption <|-- option.compare.BirthdayCompareOption
+option.compare.CompareOption <|-- option.compare.BirthdayMonthCompareOption
+option.compare.CompareOption <|-- option.compare.PhoneNumberCompareOption
+option.compare.CompareOption <|-- option.compare.LastPhoneNumberCompareOption
+option.compare.CompareOption <|-- option.compare.MiddlePhoneNumberCompareOption
+option.compare.CompareOption <|-- option.compare.BirthdayDayCompareOption
+
+
+' Hide Option
+hide members
+'hide fields
+'hide methods
+
+'hide circle
+'hide stereotype
+
+@enduml

@@ -4,164 +4,7 @@
 skinparam classAttributeIconSize 0
 
 ' PlantUML Parser 자동 생성
-class employee.BirthDay {
-- String year
-- String month
-- String day
-+ String getYear()
-+ void setYear(String)
-+ String getMonth()
-+ void setMonth(String)
-+ String getDay()
-+ void setDay(String)
-+ String toString()
-+ boolean isValid()
-+ boolean isValidString(String)
-}
-class option.compare.BirthdayYearCompareOption {
-+ boolean compare(Employee)
-}
-class option.compare.FirstNameCompareOption {
-+ boolean compare(Employee)
-}
-class employee.CertificationLevel {
-- String certi
-+ String getCerti()
-+ void setCerti(String)
-+ String toString()
-+ boolean isValid()
-+ boolean isValidString(String)
-}
-class option.compare.CareerLevelCompareOption {
-+ boolean compare(Employee)
-}
-class database.Database {
-- List<Employee> employees
-+ List<Employee> select()
-+ List<Employee> select(CompareOption)
-+ void delete(Employee)
-+ void insert(Employee)
-+ void update(Employee,Employee)
-- boolean isDuplicateEmployeeNumber(EmployeeNumber)
-- int getInsertPosition(Employee)
-}
-class command.SearchCommand {
-- List<Employee> testResult
-+ String getCommandType()
-+ void run()
-+ List<Employee> getTestResult()
-}
-class AmongUs {
-- {static} String DEFAULT_INPUT_FILE_PATH
-- {static} String DEFAULT_OUTPUT_FILE_PATH
-- {static} String inputFileName
-- {static} String outputFileName
-+ {static} void main(String[])
-- {static} void setupFiles(String[])
-}
-class option.compare.DefaultCompareOption {
-+ boolean compare(Employee)
-}
-class employee.PhoneNumber {
-- String middleNumber
-- String lastNumber
-+ String getMiddleNumber()
-+ void setMiddleNumber(String)
-+ String getLastNumber()
-+ void setLastNumber(String)
-+ String toString()
-+ boolean isValid()
-+ boolean isValidString(String)
-}
-class command.AddCommand {
-+ String getCommandType()
-+ void run()
-+ Employee makeNewbie(List<String>)
-}
-class commandParser.CommandParser {
-- {static} int MIN_SPLIT_CNT
-- String delimiter
-- CommandTypeChecker commandTypeChecker
-- List<OptionValidChecker> optionCheckerList
-- CommandFactory commandFactory
-+ Command parseCommand(String)
-- boolean isValidCommandLine(String)
-- boolean checkArgsValidation(String,List<String>,List<String>)
-- Command getCommand(String,List<String>,List<String>)
-- Option getCommandOption(List<String>,List<String>)
-- IPrintOption getPritnOption(String)
-- CompareOption getCompareOption(String,List<String>)
-}
-class option.compare.BirthdayMonthCompareOption {
-+ boolean compare(Employee)
-}
-abstract class option.compare.CompareOption {
-# String query
-+ {abstract}boolean compare(Employee)
-}
-class option.compare.CertificationCompareOption {
-+ boolean compare(Employee)
-}
-class commandParser.commandValidChecker.PrintOptionChecker {
-+ boolean isValid(String,List<String>)
-# String getErrorMessage()
-}
-class exceptions.ImproperlyConfigured {
-}
-class option.compare.EmployeeNumberCompareOption {
-+ boolean compare(Employee)
-}
-class command.CommandFactory {
-- Database database
-+ Command getCommand(String)
-}
-abstract class commandParser.commandValidChecker.OptionValidChecker {
-+ void check(String,List<String>)
-# {abstract}boolean isValid(String,List<String>)
-# {abstract}String getErrorMessage()
-}
-class option.compare.LastPhoneNumberCompareOption {
-+ boolean compare(Employee)
-}
-class EmployeeManager {
-- CommandParser commandParser
-+ void runCommand(String)
-}
-class commandParser.commandValidChecker.Option3Checker {
-+ boolean isValid(String,List<String>)
-# String getErrorMessage()
-}
-class employee.Name {
-- String firstName
-- String lastName
-+ String getFirstName()
-+ void setFirstName(String)
-+ String getLastName()
-+ void setLastName(String)
-+ String toString()
-+ boolean isValid()
-+ boolean isValidString(String)
-}
-class option.compare.BirthdayCompareOption {
-+ boolean compare(Employee)
-}
-class option.compare.LastNameCompareOption {
-+ boolean compare(Employee)
-}
-class option.Option {
-- IPrintOption printOption
-- CompareOption compareOption
-+ IPrintOption getPrintOption()
-+ CompareOption getCompareOption()
-}
-interface option.print.IPrintOption {
-~ String report(List<Employee>,String)
-}
-class option.print.CountPrintOption {
-+ String report(List<Employee>,String)
-}
 class employee.Employee {
-- int id
 - EmployeeNumber employeeNum
 - Name name
 - CareerLevel cl
@@ -171,8 +14,6 @@ class employee.Employee {
 + boolean isValid()
 + String toString()
 + String getFullEmployeeNumber()
-+ int getId()
-+ void setId(int)
 + EmployeeNumber getEmployeeNum()
 + void setEmployeeNum(EmployeeNumber)
 + Name getName()
@@ -185,6 +26,74 @@ class employee.Employee {
 + void setBirthday(BirthDay)
 + CertificationLevel getCerti()
 + void setCerti(CertificationLevel)
+}
+class option.print.CountPrintOption {
++ String report(List<Employee>,String)
++ int getPrintLimit()
+}
+class employee.EmployeeNumber {
+- String fullNumber
+- String shortNumber
++ String getFullNumber()
++ void setFullNumber()
++ String getShortNumber()
++ void setShortNumber(String)
++ String toString()
++ boolean isValid()
++ boolean isValidString(String)
+}
+abstract class employee.EmployeeField {
++ String toString()
++ boolean isValid()
++ boolean isValidString(String)
+}
+interface option.print.IPrintOption {
+~ String report(List<Employee>,String)
+~ int getPrintLimit()
+}
+class command.ModifyCommand {
++ String getCommandType()
++ void run()
+- Employee getUpdatedEmployee(Employee,String,String)
+}
+class employee.PhoneNumber {
+- String middleNumber
+- String lastNumber
++ String getMiddleNumber()
++ void setMiddleNumber(String)
++ String getLastNumber()
++ void setLastNumber(String)
++ String toString()
++ boolean isValid()
++ boolean isValidString(String)
+}
+abstract class commandParser.commandValidChecker.OptionValidChecker {
++ void check(String,List<String>)
+# {abstract}boolean isValid(String,List<String>)
+# {abstract}String getErrorMessage()
+}
+class employee.Name {
+- String firstName
+- String lastName
++ String getFirstName()
++ void setFirstName(String)
++ String getLastName()
++ void setLastName(String)
++ String toString()
++ boolean isValid()
++ boolean isValidString(String)
+}
+class command.CommandFactory {
+- Database database
++ Command getCommand(String)
+}
+class employee.CertificationLevel {
+- String certi
++ String getCerti()
++ void setCerti(String)
++ String toString()
++ boolean isValid()
++ boolean isValidString(String)
 }
 class utility.Logger {
 - {static} File file
@@ -199,23 +108,71 @@ class utility.Logger {
 + {static} void logFile(String)
 - {static} boolean getOrCreateFile()
 }
-class option.print.ListPrintOption {
-~ {static} int PRINT_LIMIT
-+ String report(List<Employee>,String)
+class exceptions.InvalidCommandException {
 }
-class option.compare.MiddlePhoneNumberCompareOption {
-+ boolean compare(Employee)
+class option.Option {
+- IPrintOption printOption
+- CompareOption compareOption
++ IPrintOption getPrintOption()
++ CompareOption getCompareOption()
 }
-class employee.EmployeeNumber {
-- String fullNumber
-- String shortNumber
-+ String getFullNumber()
-+ void setFullNumber()
-+ String getShortNumber()
-+ void setShortNumber(String)
-+ String toString()
-+ boolean isValid()
-+ boolean isValidString(String)
+class commandParser.CommandParser {
+- {static} int MIN_SPLIT_CNT
+- String delimiter
+- CommandTypeChecker commandTypeChecker
+- List<OptionValidChecker> optionCheckerList
+- CommandFactory commandFactory
+- int printLimit
++ Command parseCommand(String)
+- boolean isValidCommandLine(String)
+- void checkArgsValidation(String,List<String>,List<String>)
+- Command getCommand(String,List<String>,List<String>)
+- Option getCommandOption(List<String>,List<String>)
+- IPrintOption getPrintOption(String)
+- CompareOption getCompareOption(String,String,String)
+}
+class command.SearchCommand {
+- List<Employee> testResult
++ String getCommandType()
++ void run()
++ List<Employee> getTestResult()
+}
+class commandParser.commandValidChecker.PrintOptionChecker {
++ boolean isValid(String,List<String>)
+# String getErrorMessage()
+}
+class command.DeleteCommand {
++ String getCommandType()
++ void run()
+}
+class commandParser.commandValidChecker.CommandTypeChecker {
+- List<String> commandList
++ void check(String)
++ boolean isValid(String)
+}
+class database.Database {
+- List<Employee> employees
+- Set<String> usedEmpNumbers
+- boolean sorted
++ List<Employee> select()
++ List<Employee> select(CompareOption)
++ List<Employee> select(CompareOption,int)
++ void delete(Employee)
++ void insert(Employee)
++ void update(Employee,Employee)
+- void sortDatabase()
+- boolean isDuplicateEmployeeNumber(String)
+}
+class commandParser.commandValidChecker.CompareOptionChecker {
+- Map<String,List<String>> columnOptionMap
++ boolean isValid(String,List<String>)
+# String getErrorMessage()
+}
+class EmployeeManager {
+- CommandParser commandParser
++ void runCommand(String)
+}
+class exceptions.ImproperlyConfigured {
 }
 class employee.CareerLevel {
 - String cl
@@ -225,6 +182,57 @@ class employee.CareerLevel {
 + boolean isValid()
 + boolean isValidString(String)
 }
+abstract class option.compare.CompareOption {
+# String query
++ {abstract}boolean compare(Employee)
+}
+class option.print.ListPrintOption {
+- int printLimit
++ String report(List<Employee>,String)
++ int getPrintLimit()
+}
+'class option.compare.FirstNameCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.EmployeeNumberCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.NameCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.LastNameCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.DefaultCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.CareerLevelCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.BirthdayYearCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.BirthdayCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.CertificationCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.BirthdayMonthCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.PhoneNumberCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.LastPhoneNumberCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.MiddlePhoneNumberCompareOption {
+'+ boolean compare(Employee)
+'}
+'class option.compare.BirthdayDayCompareOption {
+'+ boolean compare(Employee)
+'}
 abstract class command.Command {
 # int paramCount
 # Database database
@@ -240,72 +248,70 @@ abstract class command.Command {
 + {abstract}String getCommandType()
 + {abstract}void run()
 }
-class commandParser.commandValidChecker.CompareOptionChecker {
-- Map<String,List<String>> columnOptionMap
+class commandParser.commandValidChecker.Option3Checker {
 + boolean isValid(String,List<String>)
 # String getErrorMessage()
 }
-class command.ModifyCommand {
-+ String getCommandType()
-+ void run()
-- Employee getUpdatedEmployee(Employee,String,String)
-}
-class option.compare.NameCompareOption {
-+ boolean compare(Employee)
-}
-class command.DeleteCommand {
-+ String getCommandType()
-+ void run()
-}
-abstract class employee.EmployeeField {
+class employee.BirthDay {
+- String year
+- String month
+- String day
++ String getYear()
++ void setYear(String)
++ String getMonth()
++ void setMonth(String)
++ String getDay()
++ void setDay(String)
 + String toString()
 + boolean isValid()
 + boolean isValidString(String)
 }
-class option.compare.BirthdayDayCompareOption {
-+ boolean compare(Employee)
+class command.AddCommand {
++ String getCommandType()
++ void run()
+- Employee makeNewbie(List<String>)
 }
-class commandParser.commandValidChecker.CommandTypeChecker {
-- List<String> commandList
-+ void check(String)
-+ boolean isValid(String)
-}
-class option.compare.PhoneNumberCompareOption {
-+ boolean compare(Employee)
+class AmongUs {
+- {static} String DEFAULT_INPUT_FILE_PATH
+- {static} String DEFAULT_OUTPUT_FILE_PATH
+- {static} String inputFileName
+- {static} String outputFileName
++ {static} void main(String[])
+- {static} void setupFiles(String[])
 }
 
 
-employee.EmployeeField <|-- employee.BirthDay
-option.compare.CompareOption <|-- option.compare.BirthdayYearCompareOption
-option.compare.CompareOption <|-- option.compare.FirstNameCompareOption
-employee.EmployeeField <|-- employee.CertificationLevel
-option.compare.CompareOption <|-- option.compare.CareerLevelCompareOption
-command.Command <|-- command.SearchCommand
-option.compare.CompareOption <|-- option.compare.DefaultCompareOption
-employee.EmployeeField <|-- employee.PhoneNumber
-command.Command <|-- command.AddCommand
-option.compare.CompareOption <|-- option.compare.BirthdayMonthCompareOption
-option.compare.CompareOption <|-- option.compare.CertificationCompareOption
-commandParser.commandValidChecker.OptionValidChecker <|-- commandParser.commandValidChecker.PrintOptionChecker
-exceptions.Exception <|-- exceptions.ImproperlyConfigured
-option.compare.CompareOption <|-- option.compare.EmployeeNumberCompareOption
-option.compare.CompareOption <|-- option.compare.LastPhoneNumberCompareOption
-commandParser.commandValidChecker.OptionValidChecker <|-- commandParser.commandValidChecker.Option3Checker
-employee.EmployeeField <|-- employee.Name
-option.compare.CompareOption <|-- option.compare.BirthdayCompareOption
-option.compare.CompareOption <|-- option.compare.LastNameCompareOption
 option.print.IPrintOption <|.. option.print.CountPrintOption
-option.print.IPrintOption <|.. option.print.ListPrintOption
-option.compare.CompareOption <|-- option.compare.MiddlePhoneNumberCompareOption
 employee.EmployeeField <|-- employee.EmployeeNumber
-employee.EmployeeField <|-- employee.CareerLevel
-commandParser.commandValidChecker.OptionValidChecker <|-- commandParser.commandValidChecker.CompareOptionChecker
 command.Command <|-- command.ModifyCommand
-option.compare.CompareOption <|-- option.compare.NameCompareOption
+employee.EmployeeField <|-- employee.PhoneNumber
+employee.EmployeeField <|-- employee.Name
+employee.EmployeeField <|-- employee.CertificationLevel
+exceptions.RuntimeException <|-- exceptions.InvalidCommandException
+command.Command <|-- command.SearchCommand
+commandParser.commandValidChecker.OptionValidChecker <|-- commandParser.commandValidChecker.PrintOptionChecker
 command.Command <|-- command.DeleteCommand
-option.compare.CompareOption <|-- option.compare.BirthdayDayCompareOption
-option.compare.CompareOption <|-- option.compare.PhoneNumberCompareOption
-
+commandParser.commandValidChecker.OptionValidChecker <|-- commandParser.commandValidChecker.CompareOptionChecker
+exceptions.RuntimeException <|-- exceptions.ImproperlyConfigured
+employee.EmployeeField <|-- employee.CareerLevel
+option.print.IPrintOption <|.. option.print.ListPrintOption
+'option.compare.CompareOption <|-- option.compare.EmployeeNumberCompareOption
+'option.compare.CompareOption <|-- option.compare.NameCompareOption
+'option.compare.CompareOption <|-- option.compare.DefaultCompareOption
+'option.compare.CompareOption <|-- option.compare.CertificationCompareOption
+'option.compare.CompareOption <|-- option.compare.FirstNameCompareOption
+'option.compare.CompareOption <|-- option.compare.LastNameCompareOption
+'option.compare.CompareOption <|-- option.compare.CareerLevelCompareOption
+'option.compare.CompareOption <|-- option.compare.BirthdayYearCompareOption
+'option.compare.CompareOption <|-- option.compare.BirthdayCompareOption
+'option.compare.CompareOption <|-- option.compare.BirthdayMonthCompareOption
+'option.compare.CompareOption <|-- option.compare.PhoneNumberCompareOption
+'option.compare.CompareOption <|-- option.compare.LastPhoneNumberCompareOption
+'option.compare.CompareOption <|-- option.compare.MiddlePhoneNumberCompareOption
+'option.compare.CompareOption <|-- option.compare.BirthdayDayCompareOption
+commandParser.commandValidChecker.OptionValidChecker <|-- commandParser.commandValidChecker.Option3Checker
+employee.EmployeeField <|-- employee.BirthDay
+command.Command <|-- command.AddCommand
 
 ' Manual 작성
 AmongUs ..> EmployeeManager
